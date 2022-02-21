@@ -11,11 +11,13 @@
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
-# define FILLIT-H 
+# define FILLIT_H
 
 # include "../libft/libft.h"
 # include <fcntl.h>
 # include <unistd.h>
+
+#define BUFF 546
 
 typedef struct s_piece
 {
@@ -24,5 +26,6 @@ typedef struct s_piece
 }	t_piece;
 
 char	**solve(t_piece *input);
+int		ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb);
 
 #endif
