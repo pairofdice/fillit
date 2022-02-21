@@ -18,15 +18,16 @@ int	ft_isvalid(char *buff, ssize_t chr_count)
 	int	i;
 
 	i = 0;
-	if (chr_count < 20 || chr_count % 5 != 0 || (chr_count + 1) % 5 != 0)
-		return (0);
+	printf("%zd\n", chr_count);
+	printf("%s", buff);
 	while (buff[i] != '\0')
 	{
-		if (i % 5 == 0 || i % 21 == 0)
-			if (buff[i] != '\n')
-				return (0);
-		if (buff[i] != '#' || buff[i] != '.')
+		if (buff[i] != '#' && buff[i] != '.' && buff[i] != '\n')
 			return (0);
+		if (buff[i] == '\n')
+			if((i + 1) % 21 != 0)
+				if ((i + 1) % 5 != 0)
+					return (0);
 		i++;
 	}
 	return (1);
@@ -42,7 +43,7 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (write(1, "error opening\n", 14));
-	chr_count = read(fd, buff, BUFF);
+	chr_count = read(fd, buff, BUFF + 1);
 	buff[chr_count] = '\0';
 	if (ft_isvalid(buff, chr_count) != 1)
 		return (write(1, "error\n", 6));
