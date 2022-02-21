@@ -1,0 +1,4 @@
+*.swp
+norm_errors
+norm_output
+test_exe

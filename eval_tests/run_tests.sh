@@ -1,8 +1,10 @@
+#!/bin/sh
+
 CFLAGS="-Wall -Wextra -Werror -g" #-fsanitize=address"
 INCLUDES="-I . -I ../src/" 
 #LDFLAGS="-L . -l ftprintf" #-fsanitize=address" #static library and its location
 
-printf "\nRunning norminette..."
+printf "\nRunning norminette...\n\n"
 norminette ../ > norm_output
 grep -B 1 "Error" norm_output > norm_errors
 if [ -s norm_errors ]
@@ -13,12 +15,13 @@ then
 else
 	printf "Norme OK\n"
 fi
-rm -f norm_output norm_errors
 
 for f in *.test
 do
 	mv "$f" "${f%.test}"
 done
+
+rm norm_output norm_errors
 
 rm -f test_exe
 test_srcs="test*.c"
