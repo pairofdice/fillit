@@ -12,6 +12,8 @@
 
 #include "fillit.h"
 
+// TODO Functions to:
+
 // Find a valid placement for a given piece
 
 // Enter the piece into the map
@@ -21,6 +23,7 @@
 // Do the actual search for a solution
 
 // Resize map
+
 
 char	**solve(t_piece *input);
 {
