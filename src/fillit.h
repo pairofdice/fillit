@@ -1,38 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/21 12:19:58 by jsaarine         ###   ########.fr       */
+/*   Created: 2022/02/21 13:49:04 by jsaarine          #+#    #+#             */
+/*   Updated: 2022/02/21 13:56:01 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <time.h>
-#include <fcntl.h>
-#include <stdio.h>
-//#include <sys/types.h>
-//#include <sys/uio.h>
-//#include <unistd.h>
-//#include <stdlib.h>
+#ifndef FILLIT_H
+# define FILLIT-H 
 
-/* Testing main */
-int test_main(int argc, char **argv)
+# include "../libft/libft.h"
+# include <fcntl.h>
+# include <unistd.h>
+
+typedef struct s_piece
 {
-	int i;
-	int fd;
-	char	*tests[] = {
-		"one_piece",
-		0};
+	int offsets [6];
+	char name;
+}	t_piece;
 
+char	**solve(t_piece *input);
 
-	i = 0;
-	while (tests[i])
-	{
-		main(2, tests[i]);
-
-	}
-}
+#endif

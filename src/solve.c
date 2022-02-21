@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/21 12:19:58 by jsaarine         ###   ########.fr       */
+/*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
+/*   Updated: 2022/02/21 14:09:45 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include <time.h>
-#include <fcntl.h>
-#include <stdio.h>
-//#include <sys/types.h>
-//#include <sys/uio.h>
-//#include <unistd.h>
-//#include <stdlib.h>
+#include "fillit.h"
 
-/* Testing main */
-int test_main(int argc, char **argv)
+// Find a valid placement for a given piece
+
+// Enter the piece into the map
+
+// remove a piece from the map
+
+// Do the actual search for a solution
+
+// Resize map
+
+char	**solve(t_piece *input);
 {
-	int i;
-	int fd;
-	char	*tests[] = {
-		"one_piece",
-		0};
-
-
-	i = 0;
-	while (tests[i])
-	{
-		main(2, tests[i]);
-
-	}
+	// Try to solve
+	// if no solution found make the map bigger
 }
