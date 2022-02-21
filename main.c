@@ -35,11 +35,23 @@ int	ft_chrcount(char *buff)
 	return (1);
 }
 
-/*int	ft_adjpart(char *buff)
+int	ft_adjpart(char *buff)
 {
-	printf("test\n");
+	int	i;
+	int	connection;
+
+	i = 0;
+	while (i < 19)
+	{
+		if (buff[i] == '#')
+		{
+			if (i % 5 == 0 && buff[i + 1] )
+
+		}
+	i++;
+	}
 	return (1);
-}*/
+}
 
 int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
 {
@@ -50,7 +62,7 @@ int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
 	{
 		if (ft_chrcount(buff + i) != 1)
 			return (0);
-	//	ft_adjpart(buff + i);
+		ft_adjpart(buff + i);
 		i += 21;
 		tetri_nb++;
 	}
