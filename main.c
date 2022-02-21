@@ -13,6 +13,13 @@
 #include "fillit.h"
 #include "libft/libft.h"
 
+
+
+void parse_pieces(char **input, t_piece *pieces, size_t num_pieces)
+{
+	 
+}
+
 int	ft_isvalid(char *buff, ssize_t chr_count)
 {
 	int	i;
