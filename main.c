@@ -13,29 +13,46 @@
 #include "fillit.h"
 #include "libft/libft.h"
 
-
-
-void parse_pieces(char **input, t_piece *pieces, size_t num_pieces)
-{
-	 
-}
-
-int	ft_isvalid(char *buff, ssize_t chr_count)
+int	ft_chrcount(char *buff)
 {
 	int	i;
+	int piece;
 
 	i = 0;
-	printf("%zd\n", chr_count);
-	printf("%s", buff);
-	while (buff[i] != '\0')
+	piece = 0;
+	while (i < 19)
 	{
 		if (buff[i] != '#' && buff[i] != '.' && buff[i] != '\n')
 			return (0);
-		if (buff[i] == '\n')
-			if((i + 1) % 21 != 0)
-				if ((i + 1) % 5 != 0)
-					return (0);
+		if (buff[i] == '\n' && (i + 1) % 5 != 0)
+			return (0);
+		if (buff[i] == '#')
+			piece++;
 		i++;
+	}
+	if (!buff[i] || buff[i] != '\n' || piece != 4)
+		return (0);
+	return (1);
+}
+
+/*int	ft_adjpart(char *buff)
+{
+	printf("test\n");
+	return (1);
+}*/
+
+int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
+{
+	int i;
+
+	i = 0;
+	while (i < chr_count)
+	{
+		if (ft_chrcount(buff + i) != 1)
+			return (0);
+	//	ft_adjpart(buff + i);
+		i += 21;
+		tetri_nb++;
 	}
 	return (1);
 }
@@ -44,7 +61,10 @@ int	main(int argc, char **argv)
 {
 	int		fd;
 	ssize_t chr_count;
+	int		tetri_nb;
 	char	buff[BUFF + 1];
+
+	tetri_nb = 0;
 	if (argc != 2)
 		return (write(1, "usage: ./fillit input_file\n", 28));
 	fd = open(argv[1], O_RDONLY);
@@ -52,7 +72,7 @@ int	main(int argc, char **argv)
 		return (write(1, "error opening\n", 14));
 	chr_count = read(fd, buff, BUFF + 1);
 	buff[chr_count] = '\0';
-	if (ft_isvalid(buff, chr_count) != 1)
+	if (ft_isvalid(buff, chr_count, tetri_nb) != 1)
 		return (write(1, "error\n", 6));
 	else 
 		return (write(1, "ok\n", 3));
