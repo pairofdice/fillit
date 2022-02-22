@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 19:20:53 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:39:57 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int test_parse()
 {
 	int i;
 	int k;
-	int fd;
-	int ret;
 	char test_input[22];
 	t_piece piece;
 	char	*tests[] = {
@@ -37,25 +35,23 @@ int test_parse()
 		"one_piece4",
 		"one_piece5",
 		0};
+
 	printf("\n");
 	i = 0;
 	while (tests[i])
 	{
 		if (i > 0)
 			printf("-------\n");
-		fd = open(tests[i], O_RDONLY);
-		ret = read(fd, test_input, 22);
+		read(open(tests[i], O_RDONLY), test_input, 22);
 		test_input[21] = '\0';
 		printf("%s\n",test_input);
 		parse_piece(test_input, &piece);
 		k = 0;
 		while (k < 3)
 		{
-			printf("% d, % d\n", piece.offsets[k], piece.offsets[k + 1]);
+			printf("% d, % d\n", piece.offsets[k*2], piece.offsets[k*2 + 1]);
 			k++;
 		}
-
-
 		i++;
 	}
 }
@@ -63,4 +59,5 @@ int test_parse()
 int main(int argc, char **argv)
 {
 	test_parse();
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 19:17:32 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:41:43 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	parse_piece(char *input, t_piece *piece)
 	while (i < 3)
 	{
 		next = ft_strchr(++next, '#');
-		piece->offsets[i] =  ((next - input) % 5) - (first - input) % 5;
-		piece->offsets[i + 1] =  ((next - input) / 5) - (first - input) / 5;
+		piece->offsets[i * 2] =  ((next - input) % 5) - (first - input) % 5;
+		piece->offsets[i * 2 + 1] =  ((next - input) / 5) - (first - input) / 5;
 		i++;
 	}
 }
