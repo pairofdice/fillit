@@ -16,7 +16,7 @@
 int	main(int argc, char **argv)
 {
 	int		fd;
-	ssize_t chr_count;
+	ssize_t	chr_count;
 	int		tetri_nb;
 	char	buff[BUFF + 1];
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	buff[chr_count] = '\0';
 	if (ft_isvalid(buff, chr_count, tetri_nb) != 1)
 		return (write(1, "error\n", 6));
-	else 
+	else
 		return (write(1, "ok\n", 3));
 //	ft_parse(buff);
 	return (0);

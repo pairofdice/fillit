@@ -16,7 +16,7 @@
 int	ft_chrcount(char *buff)
 {
 	int	i;
-	int piece;
+	int	piece;
 
 	i = 0;
 	piece = 0;
@@ -64,7 +64,7 @@ int	ft_adjpart(char *buff)
 
 int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < chr_count)
