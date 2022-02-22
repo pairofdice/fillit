@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/21 12:19:58 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 13:49:55 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,29 @@
 //#include <stdlib.h>
 
 /* Testing main */
-int test_main(int argc, char **argv)
+
+int test_parse()
 {
-	int i;
 	int fd;
-	char	*tests[] = {
-		"one_piece",
-		0};
+	int ret;
+	char test_input[22];
 
+	fd = open("one_piece1", O_RDONLY);
+	ret = read(fd, test_input, 22);
+	test_input[21] = '\0';
+	
+	parse_piece(test_input);
 
-	i = 0;
-	while (tests[i])
-	{
-		main(2, tests[i]);
+		fd = open("one_piece2", O_RDONLY);
+	ret = read(fd, test_input, 22);
+	test_input[21] = '\0';
+	
+	parse_piece(test_input);
+	
+}
 
-	}
+int main(int argc, char **argv)
+{
+	test_parse();
+		
 }
