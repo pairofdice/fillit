@@ -6,33 +6,28 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 18:45:54 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:17:32 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// temp file
 #include "../libft/libft.h"
+#include "fillit.h"
 
-void	parse_piece(char *input)
+void	parse_piece(char *input, t_piece *piece)
 {
 	int	i;
-	char *first_part;
-	char *next_part;
-	int x;
-	int y;
-	printf("hello\n");
+	char *first;
+	char *next;
 
-	first_part = ft_strchr(input, '#');
-	next_part = first_part;
+	first = ft_strchr(input, '#');
+	next = first;
 	i = 0;
-	x = (first_part - input) % 5;
-	y = (first_part - input) / 5;
-	printf("    % d % d\n", x, y);
 	while (i < 3)
 	{
-		next_part = ft_strchr(++next_part, '#');
- 		printf("% d  ", (next_part - first_part));
-		printf("% d,", ((next_part - input) % 5) - x );
-		printf("% d\n", ((next_part - input) / 5) - y);
+		next = ft_strchr(++next, '#');
+		piece->offsets[i] =  ((next - input) % 5) - (first - input) % 5;
+		piece->offsets[i + 1] =  ((next - input) / 5) - (first - input) / 5;
 		i++;
 	}
 }

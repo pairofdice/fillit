@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 18:50:28 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:20:53 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <time.h>
 #include <fcntl.h>
 #include <stdio.h>
+#include "../src/fillit.h"
 //#include <sys/types.h>
 //#include <sys/uio.h>
 //#include <unistd.h>
@@ -24,9 +25,11 @@
 int test_parse()
 {
 	int i;
+	int k;
 	int fd;
 	int ret;
 	char test_input[22];
+	t_piece piece;
 	char	*tests[] = {
 		"one_piece1",
 		"one_piece2",
@@ -34,13 +37,25 @@ int test_parse()
 		"one_piece4",
 		"one_piece5",
 		0};
-
+	printf("\n");
+	i = 0;
 	while (tests[i])
 	{
+		if (i > 0)
+			printf("-------\n");
 		fd = open(tests[i], O_RDONLY);
 		ret = read(fd, test_input, 22);
 		test_input[21] = '\0';
-		parse_piece(test_input);
+		printf("%s\n",test_input);
+		parse_piece(test_input, &piece);
+		k = 0;
+		while (k < 3)
+		{
+			printf("% d, % d\n", piece.offsets[k], piece.offsets[k + 1]);
+			k++;
+		}
+
+
 		i++;
 	}
 }
