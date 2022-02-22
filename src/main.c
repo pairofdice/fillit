@@ -15,11 +15,13 @@
 int	main(int argc, char **argv)
 {
 	int		tetri_nb;
+//	t_piece *tetri_set[MAX_TETRI];
+	char	buff[BUFF + 1];
 
 	tetri_nb = 0;
 	if (argc != 2)
 		return ((int)write(1, "usage: ./fillit input_file\n", 28));
-	if (ft_isvalid(argv, tetri_nb) != 1)
+	if (ft_isvalid(argv, buff, tetri_nb) != 1)
 		return ((int)write(1, "error\n", 6));
 	else
 		return ((int)write(1, "ok\n", 3));
