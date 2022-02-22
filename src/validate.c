@@ -61,11 +61,20 @@ int	ft_adjpart(char *buff)
 	return (1);
 }
 
-int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
+int	ft_isvalid(char **argv, int tetri_nb)
 {
-	int	i;
+	int		i;
+	int		fd;
+	ssize_t	chr_count;
+	char	buff[BUFF + 1];
 
 	i = 0;
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (0);
+	chr_count = read(fd, buff, BUFF + 1);
+	buff[chr_count] = '\0';
+	close(fd);
 	if (buff[i] == '\0')
 		return (0);
 	while (i < chr_count)
