@@ -3,36 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncsomori <ncsomori@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:31:11 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/02/22 12:15:09 by ncsomori         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:55:38 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-void find_neighbour(char **first_corner, t_piece *piece)
-{
-	
-}
-
-
-void	parse_piece(char **input)
-{
-	int i;
-	char *first_corner;
-	t_piece piece;
-	// Find first square of the tetrimino
-	first_corner = ft_strchr(*input, '#');
-	i = 0;
-	while (i++ < 3)
-	{
-		// And then using 1d array operations find the neighbors???
-		find_neighbour(&first_corner, &piece);
-
-	}
-}
 
 int	ft_chrcount(char *buff)
 {

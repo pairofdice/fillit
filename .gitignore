@@ -3,3 +3,4 @@ norm_errors
 norm_output
 test_exe
 a.out
+*.gch
