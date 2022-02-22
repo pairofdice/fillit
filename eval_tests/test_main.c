@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   test_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 13:49:55 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 18:50:28 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,29 @@
 
 int test_parse()
 {
+	int i;
 	int fd;
 	int ret;
 	char test_input[22];
+	char	*tests[] = {
+		"one_piece1",
+		"one_piece2",
+		"one_piece3",
+		"one_piece4",
+		"one_piece5",
+		0};
 
-	fd = open("one_piece1", O_RDONLY);
-	ret = read(fd, test_input, 22);
-	test_input[21] = '\0';
-	
-	parse_piece(test_input);
-
-		fd = open("one_piece2", O_RDONLY);
-	ret = read(fd, test_input, 22);
-	test_input[21] = '\0';
-	
-	parse_piece(test_input);
-	
+	while (tests[i])
+	{
+		fd = open(tests[i], O_RDONLY);
+		ret = read(fd, test_input, 22);
+		test_input[21] = '\0';
+		parse_piece(test_input);
+		i++;
+	}
 }
 
 int main(int argc, char **argv)
 {
 	test_parse();
-		
 }
