@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ncsomori <ncsomori@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/02/21 11:54:26 by ncsomori         ###   ########.fr       */
+/*   Updated: 2022/02/22 21:08:33 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		return ((int)write(1, "error\n", 6));
 	else
 		return ((int)write(1, "ok\n", 3));
-//	ft_parse(buff);
+//	ft_parse(argv[1], buff, tetri_nb);
 //	ft_solve()
 	return (0);
 }
