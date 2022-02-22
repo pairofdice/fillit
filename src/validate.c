@@ -12,6 +12,28 @@
 
 #include "fillit.h"
 
+void find_neighbour(char **first_corner, t_piece *piece)
+{
+	
+}
+
+
+void	parse_piece(char **input)
+{
+	int i;
+	char *first_corner;
+	t_piece piece;
+	// Find first square of the tetrimino
+	first_corner = ft_strchr(*input, '#');
+	i = 0;
+	while (i++ < 3)
+	{
+		// And then using 1d array operations find the neighbors???
+		find_neighbour(&first_corner, &piece);
+
+	}
+}
+
 int	ft_chrcount(char *buff)
 {
 	int	i;
