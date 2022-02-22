@@ -30,7 +30,7 @@ int	ft_chrcount(char *buff)
 			piece++;
 		i++;
 	}
-	if (!buff[i] || buff[i] != '\n' || piece != 4)
+	if (!buff[i] || piece != 4 || (buff[i] != '\n' && buff[i] != '\0'))
 		return (0);
 	return (1);
 }
@@ -67,6 +67,8 @@ int	ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb)
 	int	i;
 
 	i = 0;
+	if (buff[i] == '\0')
+		return (0);
 	while (i < chr_count)
 	{
 		if (ft_chrcount(buff + i) != 1)
