@@ -17,12 +17,12 @@
 # include <fcntl.h>
 # include <unistd.h>
 
-#define BUFF 546
+# define BUFF 546
 
 typedef struct s_piece
 {
-	int offsets [6];
-	char name;
+	int		offsets [6];
+	char	name;
 }	t_piece;
 
 char	**solve(t_piece *input);
