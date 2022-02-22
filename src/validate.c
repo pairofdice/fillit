@@ -57,7 +57,6 @@ int	ft_adjpart(char *buff)
 		}
 	i++;
 	}
-	printf("%d\n", connection);
 	if (connection != 6 && connection != 8)
 		return (0);
 	return (1);

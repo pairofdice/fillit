@@ -13,8 +13,6 @@
 #include "src/fillit.h"
 #include "libft/libft.h"
 
-
-
 int	main(int argc, char **argv)
 {
 	int		fd;
