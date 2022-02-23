@@ -18,6 +18,7 @@
 # include <unistd.h>
 
 # define BUFF 546
+# define MAX_TETRI 26
 
 typedef struct s_piece
 {
@@ -26,8 +27,8 @@ typedef struct s_piece
 }	t_piece;
 
 char	**solve(t_piece *input);
-int		ft_isvalid(char **argv, char *buff, int tetri_nb);
+int		ft_isvalid(char **argv, char *buff, int *tetri_nb);
 void	parse_piece(char *input, t_piece *piece);
-void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb);
+int		ft_parse(char *input, t_piece **input_pieces, int tetri_nb);
 
 #endif

@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 {
 	int		tetri_nb;
 	int		min_size;
-//	t_piece *tetri_set[MAX_TETRI];
+	t_piece *tetri_set[MAX_TETRI];
 	char	buff[BUFF + 1];
 
 	tetri_nb = 0;
@@ -40,8 +40,20 @@ int	main(int argc, char **argv)
 	if (ft_isvalid(argv, buff, &tetri_nb) != 1)
 		return ((int)write(1, "error\n", 6));
 	min_size = ft_sqrt(tetri_nb * 4);
-	printf("%d\n", min_size);
-//	ft_parse(argv[1], buff, tetri_nb);
+	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
+		return ((int)write(1, "error\n", 6));
 //	ft_solve()
+	printf("%ld\n", tetri_set[0]->offsets[0]);
+	printf("%ld\n", tetri_set[0]->offsets[1]);
+	printf("%ld\n", tetri_set[0]->offsets[2]);
+	printf("%ld\n", tetri_set[0]->offsets[3]);
+	printf("%ld\n", tetri_set[0]->offsets[4]);
+	printf("%ld\n", tetri_set[0]->offsets[5]);
+	printf("%ld\n", tetri_set[25]->offsets[0]);
+	printf("%ld\n", tetri_set[25]->offsets[1]);
+	printf("%ld\n", tetri_set[25]->offsets[2]);
+	printf("%ld\n", tetri_set[25]->offsets[3]);
+	printf("%ld\n", tetri_set[25]->offsets[4]);
+	printf("%ld\n", tetri_set[25]->offsets[5]);
 	return (0);
 }

@@ -34,7 +34,27 @@ void	parse_piece(char *input, t_piece *piece)
 	}
 }
 
-void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb)
+int	ft_parse(char *input, t_piece **input_pieces, int tetri_nb)
+{
+	int		i;
+	size_t	len;
+
+	len = ft_strlen(input);
+	i = 0;
+	while (i < tetri_nb)
+	{
+		input_pieces[i] = malloc(sizeof(t_piece));
+		if (!input_pieces[i])
+			//delete all malloced pieces &
+			return (1);
+		parse_piece(input, input_pieces[i]);
+		input = input + 21;
+		i++;
+	}
+	return (0);
+}
+
+/*void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb)
 {
 	int		i;
 	size_t	len;
@@ -51,3 +71,4 @@ void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb)
 		i++;
 	}
 }
+*/
