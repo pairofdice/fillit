@@ -26,7 +26,7 @@ typedef struct s_piece
 }	t_piece;
 
 char	**solve(t_piece *input);
-int		ft_isvalid(char *buff, ssize_t chr_count, int tetri_nb);
+int		ft_isvalid(char **argv, char *buff, int tetri_nb);
 void	parse_piece(char *input, t_piece *piece);
 
 #endif
