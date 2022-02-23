@@ -24,7 +24,7 @@ int	ft_sqrt(int nb)
 			return (i);
 		i++;
 	}
-	return (i - 1);
+	return (i);
 }
 
 int	main(int argc, char **argv)
