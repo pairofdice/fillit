@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/23 12:08:55 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:28:05 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parse_piece(char *input, t_piece *piece)
 	}
 }
 
-void	ft_parse(char *input, t_piece *map, int tetri_nb)
+void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb)
 {
 	int		i;
 	size_t	len;
@@ -45,13 +45,8 @@ void	ft_parse(char *input, t_piece *map, int tetri_nb)
 	while (i < tetri_nb)
 	{
 
-		parse_piece(input, map + i);
-		// parse a single piece into the map
-		// move pointer along the correct amount making sure to stay in bounds
-		/*
-		if (boundcheck)
-			input = input + 21?
-		*/
+		parse_piece(input, input_pieces + i);
+		input = input + 21;
 		i++;
 	}
 }

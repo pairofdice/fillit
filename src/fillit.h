@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:49:04 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/23 12:41:18 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 13:29:42 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_piece
 }	t_piece;
 
 char	**solve(t_piece *input);
-int		ft_isvalid(char **argv, char *buff, int *tetri_nb);
+int		ft_isvalid(char **argv, char *buff, int tetri_nb);
+void	parse_piece(char *input, t_piece *piece);
+void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb);
 
 #endif
