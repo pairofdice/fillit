@@ -61,7 +61,7 @@ int	ft_adjpart(char *buff)
 	return (1);
 }
 
-int	ft_isvalid(char **argv, char *buff, int tetri_nb)
+int	ft_isvalid(char **argv, char *buff, int *tetri_nb)
 {
 	int		i;
 	int		fd;
@@ -83,7 +83,7 @@ int	ft_isvalid(char **argv, char *buff, int tetri_nb)
 		if (ft_adjpart(buff + i) != 1)
 			return (0);
 		i += 21;
-		tetri_nb++;
+		(*tetri_nb)++;
 	}
 	return (1);
 }
