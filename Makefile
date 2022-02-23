@@ -15,7 +15,8 @@ NAME = fillit
 S = src/
 
 SRC = $Smain.c \
-	  $Svalidate.c
+	  $Svalidate.c \
+	  $Sparse.c
 
 HDR = $Sfillit.h
 
