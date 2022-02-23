@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+         #
+#    By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 12:59:18 by ncsomori          #+#    #+#              #
-#    Updated: 2022/02/22 23:29:08 by jsaarine         ###   ########.fr        #
+#    Updated: 2022/02/23 12:03:07 by jsaarine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,3 @@ fclean: clean
 	make -C $(LIBFT) fclean
 
 re: fclean all
-
-test:
-	rm test_exe
-	gcc -o test_exe eval_tests/test_main.c src/parse.c libft/*.c
-	./test_exe
