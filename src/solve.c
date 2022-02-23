@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/21 14:09:45 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 16:57:07 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,35 @@
 // TODO Functions to:
 
 // Find a valid placement for a given piece
+void	ft_next_valid_move(char **map_maybe, t_piece piece);
+{
+	// traverse cols, traverse rows
+	// try to insert piece at each location checking bounds
+	// if we find a spot return what? A pointer to a 1D array or x,y location in 2D array?
+	// if we reach the end return NULL?
+}
 
 // Enter the piece into the map
+void	ft_place_piece(char **map, t_piece piece)
+{
+	// check bounds
+	// index into map using offsets
+}
 
 // remove a piece from the map
+	// This could use ft_place_piece with piece name set to '.' or something
 
 // Do the actual search for a solution
+void	ft_solve()
+{
+	// left as an exercise for the reader
+}
 
 // Resize map
+void ft_map_resize(char **map)
+{
+	// ...
+}
 
 
 char	**solve(t_piece *input);
