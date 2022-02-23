@@ -54,7 +54,7 @@ int	ft_adjpart(char *buff)
 			if (i + 5 <= 19 && buff[i + 5] == '#')
 				connection++;
 		}
-	i++;
+		i++;
 	}
 	if (connection != 6 && connection != 8)
 		return (0);
