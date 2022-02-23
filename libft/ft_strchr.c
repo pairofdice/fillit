@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:47:19 by jsaarine          #+#    #+#             */
-/*   Updated: 2021/11/20 16:41:50 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:11:48 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
-	int	len;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
 	len = ft_strlen(s);

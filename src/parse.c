@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 22:46:44 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:08:55 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 
 void	parse_piece(char *input, t_piece *piece)
 {
-	int	i;
-	int i2;
-	char *first;
-	char *next;
+	int		i;
+	int		i2;
+	char	*first;
+	char	*next;
 
 	first = ft_strchr(input, '#');
 	next = first;
@@ -37,8 +37,8 @@ void	parse_piece(char *input, t_piece *piece)
 
 void	ft_parse(char *input, t_piece *map, int tetri_nb)
 {
-	int i;
-	int len;
+	int		i;
+	size_t	len;
 
 	len = ft_strlen(input);
 	i = 0;

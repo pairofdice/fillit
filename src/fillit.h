@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:49:04 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 23:26:10 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/23 12:41:18 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@
 
 typedef struct s_piece
 {
-	int		offsets [6];
+	long		offsets [6];
 	char	name;
 }	t_piece;
 
 char	**solve(t_piece *input);
 int		ft_isvalid(char **argv, char *buff, int tetri_nb);
-void	parse_piece(char *input, t_piece *piece);
 
 #endif
