@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 12:19:54 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/22 19:39:57 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/22 23:25:53 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int test_parse()
 		}
 		i++;
 	}
+	return (0);
 }
 
 int main(int argc, char **argv)
