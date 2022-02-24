@@ -35,7 +35,7 @@ void	ft_place_piece(char **map, t_piece piece)
 	// This could use ft_place_piece with piece name set to '.' or something
 
 // Do the actual search for a solution
-void	ft_solve()
+int	ft_solve()
 {
 	// left as an exercise for the reader
 }
@@ -68,22 +68,22 @@ int	ft_map(int size, char **ptr)
 }
 
 
-int	solve(t_piece **input, int min_size)
+int	solve(t_piece **tetri_set, int min_size)
 {
 	int		size;
     char	*map;
 
     size = min_size;
-	if (!input)
+	if (!tetri_set)
 		return ;
 	// Make first map with min_size
     ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
-    while (ft_solve(t_piece **tetri_set, char *map) != 1)
+    while (ft_solve(tetri_set, map) != 1)
     {
 		size++;
 		ft_map(size, &map);
-    }*/
+    }
 	printf("%s\n", map);
 	return (1);
 }
