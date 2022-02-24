@@ -67,10 +67,10 @@ char	*ft_map(int size)
 }
 
 
-char	**solve(t_piece *input, int minn_size);
+char	**solve(t_piece *input, int min_size);
 {
-	int     size;
-    char    *map;
+	int		size;
+    char	*map;
 
     size = min_size;
 	// Make first map with min_size
@@ -78,8 +78,8 @@ char	**solve(t_piece *input, int minn_size);
 	// While solving is not successful size up, make new map and call again
     while (ft_solve(t_piece **tetri_set, char *map) != 1)
     {
-        size++;
-        ft_map(int size);
+		size++;
+		ft_map(int size);
     }
 	// Try to solve
 	// if no solution found make the map bigger
