@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/23 16:57:07 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/24 12:30:23 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ void	ft_place_piece(char **map, t_piece piece)
 // Do the actual search for a solution
 void	ft_solve()
 {
-	// left as an exercise for the reader
+	next = ft_next_valid_move(tetri_set, map);
+	if (!next)
+		return (0);
+	while (tetri_set)
+	{
+		
+	}
 }
 
 // Resize map
