@@ -48,7 +48,7 @@ char	*ft_map(int size)
 
 	i = 0;
 	len = (size + 1) * size + 1;
-	board = malloc(sizeof(char) * (unsigned long)len);
+	map = malloc(sizeof(char) * (unsigned long)len);
 	if (!map)
 		return (NULL);
 	while (i < (len - 2))
