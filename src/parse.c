@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../libft/libft.h"
 #include "fillit.h"
 
@@ -28,8 +27,8 @@ void	parse_piece(char *input, t_piece *piece)
 	{
 		next = ft_strchr(++next, '#');
 		i2 = i * 2;
-		piece->offsets[i2++] =  ((next - input) % 5) - (first - input) % 5;
-		piece->offsets[i2] =  ((next - input) / 5) - (first - input) / 5;
+		piece->offsets[i2++] = ((next - input) % 5) - (first - input) % 5;
+		piece->offsets[i2] = ((next - input) / 5) - (first - input) / 5;
 		i++;
 	}
 }
