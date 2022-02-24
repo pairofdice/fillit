@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 // TODO Functions to:
 
@@ -40,17 +41,17 @@ void	ft_solve()
 }
 
 // Make the map
-char	*ft_map(int size)
+int	ft_map(int size, char **ptr)
 {
-	char	*map;
 	int		len;
 	int		i;
+	char	*map;
 
 	i = 0;
 	len = (size + 1) * size + 1;
 	map = malloc(sizeof(char) * (unsigned long)len);
 	if (!map)
-		return (NULL);
+		return (0);
 	while (i < (len - 2))
 	{
 		if (i == size)
@@ -62,25 +63,27 @@ char	*ft_map(int size)
 		i++;
 	}
 	map[i] = '\0';
-	printf("%s\n", map);
-	return (map);
+	*ptr = map;
+	return (1);
 }
 
 
-char	**solve(t_piece *input, int min_size);
+int	solve(t_piece **input, int min_size)
 {
 	int		size;
     char	*map;
 
     size = min_size;
+	if (!input)
+		return ;
 	// Make first map with min_size
-    map = ft_map(size);
+    ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
     while (ft_solve(t_piece **tetri_set, char *map) != 1)
     {
 		size++;
-		ft_map(int size);
-    }
-	// Try to solve
-	// if no solution found make the map bigger
+		ft_map(size, &map);
+    }*/
+	printf("%s\n", map);
+	return (1);
 }

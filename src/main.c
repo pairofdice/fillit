@@ -42,6 +42,6 @@ int	main(int argc, char **argv)
 	min_size = ft_sqrt(tetri_nb * 4);
 	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
-//	ft_solve()
+	solve(tetri_set, min_size);
 	return (0);
 }

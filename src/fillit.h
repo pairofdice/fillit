@@ -22,11 +22,12 @@
 
 typedef struct s_piece
 {
-	long		offsets [6];
+	long	offsets [6];
 	char	name;
+	int		placed;
 }	t_piece;
 
-char	**solve(t_piece *input);
+int		solve(t_piece **input, int min_size);
 int		ft_isvalid(char **argv, char *buff, int *tetri_nb);
 void	parse_piece(char *input, t_piece *piece);
 int		ft_parse(char *input, t_piece **input_pieces, int tetri_nb);
