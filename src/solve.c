@@ -39,10 +39,31 @@ void	ft_solve()
 	// left as an exercise for the reader
 }
 
-// Resize map
-void ft_map_resize(char **map)
+// Make the map
+char	*ft_map(int size)
 {
-	// ...
+	char	*map;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = (size + 1) * size + 1;
+	board = malloc(sizeof(char) * (unsigned long)len);
+	if (!map)
+		return (NULL);
+	while (i < (len - 2))
+	{
+		if (i == size)
+			map[i] = '\n';
+		else if (i > size && (i + 1) % (size + 1) == 0)
+			map[i] = '\n';
+		else
+			map[i] = '.';
+		i++;
+	}
+	map[i] = '\0';
+	printf("%s\n", map);
+	return (map);
 }
 
 
