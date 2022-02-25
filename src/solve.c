@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:29:19 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:34:14 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int all_pieces_placed(t_piece **tetri_set)
 	int i;
 
 	i = 0;
-	while (*tetri_set[i]) // TODO
+	while (tetri_set[i]) // TODO
 	{
-		if (*tetri_set[i] == 0) // TODO
-		return (0);
+		if (tetri_set[i] == 0) // TODO
+			return (0);
 	}
-	return (0);
+	return (1);
 }
 
 // Do the actual search for a solution
@@ -43,7 +43,7 @@ int	ft_solve(t_piece **tetri_set, char **map)
 {
 	int i;
 
-	if (all_pieces_placed)
+	if (all_pieces_placed(tetri_set))
 		return (1);
 	if (**map != '.')
 		return (ft_solve(tetri_set, (*map)++));

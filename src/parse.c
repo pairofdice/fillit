@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:19:45 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:33:55 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	parse_piece(char *input, t_piece *piece)
 	}
 }
 
-int	ft_parse(char *input, t_piece **input_pieces, int tetri_nb)
+int	ft_parse(char *input, t_piece **tetri_set, int tetri_nb)
 {
 	int		i;
 	size_t	len;
@@ -42,11 +42,11 @@ int	ft_parse(char *input, t_piece **input_pieces, int tetri_nb)
 	i = 0;
 	while (i < tetri_nb)
 	{
-		input_pieces[i] = malloc(sizeof(t_piece));
-		if (!input_pieces[i])
+		tetri_set[i] = malloc(sizeof(t_piece));
+		if (!tetri_set[i])
 			//delete all malloced pieces &
 			return (1);
-		parse_piece(input, input_pieces[i]);
+		parse_piece(input, tetri_set[i]);
 		input = input + 21;
 		i++;
 	}
