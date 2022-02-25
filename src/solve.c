@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 10:53:58 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:10:39 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include <stdio.h>
 
 // TODO Functions to:
-
-// Find a valid placement for a given piece
-void	ft_next_valid_move(char **map_maybe, t_piece piece);
-{
-	// traverse cols, traverse rows
-	// try to insert piece at each location checking bounds
-	// if we find a spot return what? A pointer to a 1D array or x,y location in 2D array?
-	// if we reach the end return NULL?
-}
 
 // Enter the piece into the map
 void	ft_place_piece(char **map, t_piece piece)
@@ -35,22 +26,25 @@ void	ft_place_piece(char **map, t_piece piece)
 	// This could use ft_place_piece with piece name set to '.' or something
 
 // Do the actual search for a solution
-int	ft_solve(t_piece **tetri_set, char *map)
+int	ft_solve(t_piece **tetri_set, char **map)
 {
 	int i;
 
 	if (all_pieces_placed)
 		return (1);
-	if (*map != '.')
-		return (ft_solve(tetri_set, map++));
+	if (**map != '.')
+		return (ft_solve(tetri_set, (*map)++));
 	i = 0;
 	while (tetri_set[i])
 	{
 		// place_piece needs to return 1 on success, 0 on fail
-		if (!ft_place_piece(&map, *tetri_set[i]))
+		if (!ft_place_piece(map, *tetri_set[i]))
+		{
+			i++;
 			continue ;
+		}
 		mark_piece_placed ;
-		if (ft_solve(tetri_set, map++))
+		if (ft_solve(tetri_set,(*map)++))
 			return (1);
 		remove_piece();
 		mark_piece_unplaced ;
