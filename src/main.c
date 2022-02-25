@@ -6,12 +6,31 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/02/22 21:08:33 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 12:30:47 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
+
+void	print_map(char **map)
+{
+	int	side;
+	int	i;
+
+	side = ft_sqrt(ft_strlen(*map));
+	while (**map)
+	{
+		i = 0;
+		while (i < side)
+		{
+			ft_putchar((*map)++);
+			(*map)++;
+			i++;
+		}
+		ft_putchar('\n');
+	}
+}
 
 int	ft_sqrt(int nb)
 {
