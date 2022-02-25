@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 12:54:45 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/23 13:55:16 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:19:45 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,3 @@ int	ft_parse(char *input, t_piece **input_pieces, int tetri_nb)
 	}
 	return (0);
 }
-
-/*void	ft_parse(char *input, t_piece *input_pieces, int tetri_nb)
-{
-	int		i;
-	size_t	len;
-
-	len = ft_strlen(input);
-	i = 0;
-	if (tetri_nb)
-	{}
-	//while (i < tetri_nb)
-	{
-
-		parse_piece(input, input_pieces + i);
-		input = input + 1;
-		i++;
-	}
-}
-*/

@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:17:03 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:27:57 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // TODO Functions to:
 
 // Enter the piece into the map
-void	ft_place_piece(char **map, t_piece piece)
+int	ft_place_piece(char **map, t_piece piece)
 {
 	// check bounds
 	// index into map using offsets
@@ -24,6 +24,19 @@ void	ft_place_piece(char **map, t_piece piece)
 
 // remove a piece from the map
 	// This could use ft_place_piece with piece name set to '.' or something
+
+int all_pieces_placed(t_piece **tetri_set)
+{
+	int i;
+
+	i = 0;
+	while (*tetri_set[i]) // TODO
+	{
+		if (*tetri_set[i] == 0)
+		return (0);
+	}
+	return (0);
+}
 
 // Do the actual search for a solution
 int	ft_solve(t_piece **tetri_set, char **map)
@@ -43,13 +56,11 @@ int	ft_solve(t_piece **tetri_set, char **map)
 			i++;
 			continue ;
 		}
-		// maybe just a field in the piece struct and all_pieces_placed
-		// iterates through tetri_set?
-		mark_piece_placed ;
+		tetri_set[i]->placed = 1;
 		if (ft_solve(tetri_set,(*map)++))
 			return (1);
 		remove_piece();
-		mark_piece_unplaced ;
+		tetri_set[i]->placed = 0;
 		i++;
 	}
 	return (0);
