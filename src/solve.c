@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 10:47:44 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:53:58 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int	ft_solve(t_piece **tetri_set, char *map)
 			return (1);
 		remove_piece();
 		mark_piece_unplaced ;
+		i++;
 	}
 	return (0);
 }
