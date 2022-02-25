@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:10:39 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:17:03 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ int	ft_solve(t_piece **tetri_set, char **map)
 			i++;
 			continue ;
 		}
+		// maybe just a field in the piece struct and all_pieces_placed
+		// iterates through tetri_set?
 		mark_piece_placed ;
 		if (ft_solve(tetri_set,(*map)++))
 			return (1);
