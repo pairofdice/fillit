@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/23 16:57:07 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 10:47:44 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,27 @@ void	ft_place_piece(char **map, t_piece piece)
 	// This could use ft_place_piece with piece name set to '.' or something
 
 // Do the actual search for a solution
-int	ft_solve()
+int	ft_solve(t_piece **tetri_set, char *map)
 {
-	// left as an exercise for the reader
+	int i;
+
+	if (all_pieces_placed)
+		return (1);
+	if (*map != '.')
+		return (ft_solve(tetri_set, map++));
+	i = 0;
+	while (tetri_set[i])
+	{
+		// place_piece needs to return 1 on success, 0 on fail
+		if (!ft_place_piece(&map, *tetri_set[i]))
+			continue ;
+		mark_piece_placed ;
+		if (ft_solve(tetri_set, map++))
+			return (1);
+		remove_piece();
+		mark_piece_unplaced ;
+	}
+	return (0);
 }
 
 // Make the map
