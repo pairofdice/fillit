@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:34:14 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 11:44:12 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int all_pieces_placed(t_piece **tetri_set)
 	int i;
 
 	i = 0;
-	while (tetri_set[i]) // TODO
+	while (tetri_set[i]) // need a null-terminated list
 	{
-		if (tetri_set[i] == 0) // TODO
+		if (tetri_set[i]->placed == 0)
 			return (0);
 	}
 	return (1);
