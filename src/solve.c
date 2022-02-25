@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 12:18:16 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:02:40 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,38 @@
 		// if a place isn't free return 0
 	// insert
 	// return 1 on succesful insert
-int	ft_place_piece(char **map, t_piece piece)
+
+
+int	ft_place_piece(char **map, char **loc, t_piece *piece)
 {
+	int	side;
+	int k;
+
+	side = ft_sqrt(ft_strlen(*map));
+	k = 0;
+	// check
+	while (k < 3)
+	{
+		if (piece->offsets[k * 2] == occupied_by_another || OOB)
+			return (0);
+		if (piece->offsets[k * 2 + 1] == occupied_by_another || OOB)
+			return (0);
+		k++;
+	}
+	k = 0;
+	while (k < 3)
+	{
+		// place
+		k++;
+	}
+	return (1);
 }
 
 // remove a piece from the map
-	// This could use ft_place_piece with piece name set to '.' or something
+	// This could use ft_place_piece with piece name set to '.'???
+int	ft_remove_piece(char **map, t_piece piece)
+{
+}
 
 int	all_pieces_placed(t_piece **tetri_set)
 {
@@ -41,7 +67,7 @@ int	all_pieces_placed(t_piece **tetri_set)
 	return (1);
 }
 
-// Do the actual search for a solution
+// Do the actual depth-first-search for a solution
 int	ft_solve(t_piece **tetri_set, char **map)
 {
 	int	i;
@@ -53,7 +79,6 @@ int	ft_solve(t_piece **tetri_set, char **map)
 	i = 0;
 	while (tetri_set[i])
 	{
-		// place_piece needs to return 1 on success, 0 on fail
 		if (!ft_place_piece(map, *tetri_set[i]))
 		{
 			i++;

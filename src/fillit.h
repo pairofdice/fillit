@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:49:04 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 11:27:38 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 13:59:22 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ int		solve(t_piece **tetri_set, int min_size);
 int		ft_isvalid(char **argv, char *buff, int *tetri_nb);
 void	parse_piece(char *input, t_piece *piece);
 int		ft_parse(char *input, t_piece **input_pieces, int tetri_nb);
-int		ft_place_piece(char **map, t_piece piece);
+int		ft_place_piece(char **map, char **loc, t_piece *piece);
 int		all_pieces_placed(t_piece **tetri_set);
+void	print_map(char **map);
+int		ft_sqrt(int nb);
 
 #endif
