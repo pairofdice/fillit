@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/25 14:02:40 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/25 14:06:45 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int	ft_solve(t_piece **tetri_set, char **map)
 	i = 0;
 	while (tetri_set[i])
 	{
-		if (!ft_place_piece(map, *tetri_set[i]))
+		if (!ft_place_piece(map, *tetri_set[i])) // FIX
 		{
 			i++;
 			continue ;
