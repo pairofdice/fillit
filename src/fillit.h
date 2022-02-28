@@ -22,7 +22,7 @@
 
 typedef struct s_piece
 {
-	long	offsets [6];
+	long	offset [6];
 	char	name;
 	int		placed;
 }	t_piece;
