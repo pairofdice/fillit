@@ -6,57 +6,105 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/24 12:30:23 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/28 12:07:47 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
 
 // TODO Functions to:
-
-// Find a valid placement for a given piece
-void	ft_next_valid_move(char **map_maybe, t_piece piece);
-{
-	// traverse cols, traverse rows
-	// try to insert piece at each location checking bounds
-	// if we find a spot return what? A pointer to a 1D array or x,y location in 2D array?
-	// if we reach the end return NULL?
-}
-
 // Enter the piece into the map
-void	ft_place_piece(char **map, t_piece piece)
-{
 	// check bounds
-	// index into map using offsets
+	// index into map using offsets And check if all places free
+		// if a place isn't free return 0
+	// insert
+	// return 1 on succesful insert
+
+
+int	ft_place_piece(char **map, char **loc, t_piece *piece)
+{
+	int	side;
+	int k;
+
+	side = ft_sqrt(ft_strlen(*map));
+	k = 0;
+	// check
+	while (k < 3)
+	{
+		if (piece->offsets[k * 2] == occupied_by_another || OOB)
+			return (0);
+		if (piece->offsets[k * 2 + 1] == occupied_by_another || OOB)
+			return (0);
+		k++;
+	}
+	k = 0;
+	while (k < 3)
+	{
+		// place
+		k++;
+	}
+	return (1);
 }
 
 // remove a piece from the map
-	// This could use ft_place_piece with piece name set to '.' or something
-
-// Do the actual search for a solution
-void	ft_solve()
+	// This could use ft_place_piece with piece name set to '.'???
+int	ft_remove_piece(char **map, t_piece piece)
 {
-	next = ft_next_valid_move(tetri_set, map);
-	if (!next)
-		return (0);
-	while (tetri_set)
+}
+
+int	all_pieces_placed(t_piece **tetri_set)
+{
+	int	i;
+
+	i = 0;
+	// need a null-terminated list?
+	while (tetri_set[i])
 	{
-		
+		if (tetri_set[i]->placed == 0)
+			return (0);
+		i++;
 	}
+	return (1);
+}
+
+// Do the actual depth-first-search for a solution
+int	ft_solve(t_piece **tetri_set, char **map, int placed)
+{
+	if (all_pieces_placed(tetri_set))
+		return (1);
+	if (**map != '.')
+		return (ft_solve(tetri_set, ++(*map)));
+
+	while (tetri_set[placed])
+	{
+		if (!ft_place_piece(map, *tetri_set[i])) // FIX
+		{
+			i++;
+			continue ;
+		}
+		tetri_set[i]->placed = 1;
+		if (ft_solve(tetri_set, ++(*map), placed + 1)) // placed counter needs looking at
+			return (1);
+		remove_piece();
+		tetri_set[i]->placed = 0;
+		i++;
+	}
+	return (0);
 }
 
 // Make the map
-char	*ft_map(int size)
+int	ft_map(int size, char **ptr)
 {
-	char	*map;
 	int		len;
 	int		i;
+	char	*map;
 
 	i = 0;
 	len = (size + 1) * size + 1;
-	board = malloc(sizeof(char) * (unsigned long)len);
+	map = malloc(sizeof(char) * (unsigned long)len);
 	if (!map)
-		return (NULL);
+		return (0);
 	while (i < (len - 2))
 	{
 		if (i == size)
@@ -68,25 +116,26 @@ char	*ft_map(int size)
 		i++;
 	}
 	map[i] = '\0';
-	printf("%s\n", map);
-	return (map);
+	*ptr = map;
+	return (1);
 }
 
-
-char	**solve(t_piece *input, int minn_size);
+int	solve(t_piece **tetri_set, int min_size)
 {
-	int     size;
-    char    *map;
+	int		size;
+	char	*map;
 
-    size = min_size;
+	size = min_size;
+	if (!tetri_set)
+		return ;
 	// Make first map with min_size
-    map = ft_map(size);
+	ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
-    while (ft_solve(t_piece **tetri_set, char *map) != 1)
-    {
-        size++;
-        ft_map(int size);
-    }
-	// Try to solve
-	// if no solution found make the map bigger
+	while (ft_solve(tetri_set, map) != 1)
+	{
+		size++;
+		ft_map(size, &map);
+	}
+	printf("%s\n", map);
+	return (1);
 }

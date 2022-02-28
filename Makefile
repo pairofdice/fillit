@@ -16,7 +16,8 @@ S = src/
 
 SRC = $Smain.c \
 	  $Svalidate.c \
-	  $Sparse.c
+	  $Sparse.c \
+	  $Ssolve.c
 
 HDR = $Sfillit.h
 
