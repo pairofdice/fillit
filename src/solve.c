@@ -6,22 +6,19 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/28 12:07:47 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:28:50 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-// TODO Functions to:
 // Enter the piece into the map
 	// check bounds
 	// index into map using offsets And check if all places free
 		// if a place isn't free return 0
 	// insert
 	// return 1 on succesful insert
-
-
 int	ft_place_piece(char **map, char **loc, t_piece *piece)
 {
 	int	side;
@@ -49,8 +46,17 @@ int	ft_place_piece(char **map, char **loc, t_piece *piece)
 
 // remove a piece from the map
 	// This could use ft_place_piece with piece name set to '.'???
-int	ft_remove_piece(char **map, t_piece piece)
+int	ft_remove_piece(char **map, t_piece *piece)
 {
+	int i;
+	char *temp;
+
+	i = 0;
+	while (i < 4)
+	{
+		temp = ft_strchr(*map, piece->name);
+		temp = '.';
+	}
 }
 
 int	all_pieces_placed(t_piece **tetri_set)
@@ -69,16 +75,20 @@ int	all_pieces_placed(t_piece **tetri_set)
 }
 
 // Do the actual depth-first-search for a solution
-int	ft_solve(t_piece **tetri_set, char **map, int placed)
+int	ft_solve(t_piece **tetri_set, char *map, int placed)
 {
+	int i;
+
 	if (all_pieces_placed(tetri_set))
 		return (1);
-	if (**map != '.')
-		return (ft_solve(tetri_set, ++(*map)));
-
-	while (tetri_set[placed])
+	if (*map != '.')
+		return (ft_solve(tetri_set, ++map, placed));
+	i = 0;
+	while (tetri_set[i])
 	{
-		if (!ft_place_piece(map, *tetri_set[i])) // FIX
+		if (tetri_set[i]->placed)
+		
+		if (!ft_place_piece(map, tetri_set[i]) || tetri_set[i]->placed) // FIX
 		{
 			i++;
 			continue ;
@@ -131,7 +141,7 @@ int	solve(t_piece **tetri_set, int min_size)
 	// Make first map with min_size
 	ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
-	while (ft_solve(tetri_set, map) != 1)
+	while (ft_solve(tetri_set, map, 0) != 1)
 	{
 		size++;
 		ft_map(size, &map);
