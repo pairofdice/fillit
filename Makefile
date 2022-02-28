@@ -6,7 +6,7 @@
 #    By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 12:59:18 by ncsomori          #+#    #+#              #
-#    Updated: 2022/02/23 12:03:07 by jsaarine         ###   ########.fr        #
+#    Updated: 2022/02/28 13:58:56 by jsaarine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ S = src/
 SRC = $Smain.c \
 	  $Svalidate.c \
 	  $Sparse.c \
-	  $Ssolve.c
+	  $Ssolve.c 
 
 HDR = $Sfillit.h
 

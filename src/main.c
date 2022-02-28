@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 #include <stdio.h>
-
+/*
 void	print_map(char **map)
 {
 	int	side;
@@ -30,7 +30,7 @@ void	print_map(char **map)
 		}
 		ft_putchar('\n');
 	}
-}
+}*/
 
 int	ft_sqrt(int nb)
 {
@@ -61,7 +61,7 @@ int	main(int argc, char **argv)
 	min_size = ft_sqrt(tetri_nb * 4);
 	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
-	if (solve(tetri_set, min_size) == 1);
-		ft_putstr(map);
+	solve(tetri_set, min_size);
+
 	return (0);
 }

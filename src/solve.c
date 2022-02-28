@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/28 13:42:38 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:57:12 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int ft_place_piece(char *map, t_piece *tetri_set, int size)
 		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4])
 		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == '.')
 		{
-			*map == tetri_set->name;
-			*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) == tetri_set->name;
-			*(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) == tetri_set->name;
-			*(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == tetri_set->name;
+			*map = tetri_set->name;
+			*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) = tetri_set->name;
+			*(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) = tetri_set->name;
+			*(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) = tetri_set->name;
 			return (1);
 		}
 	return (0);
@@ -76,8 +76,9 @@ int	ft_remove_piece(char **map, t_piece *piece)
 	while (i < 4)
 	{
 		temp = ft_strchr(*map, piece->name);
-		temp = '.';
+		temp =  ".";
 	}
+	return (1);
 }
 
 int	all_pieces_placed(t_piece **tetri_set)
@@ -95,37 +96,30 @@ int	all_pieces_placed(t_piece **tetri_set)
 	return (1);
 }
 
-// Do the actual depth-first-search for a solution
-int	ft_solve(t_piece **tetri_set, char *map, int size)
+int    ft_solve(t_piece **tetri_set, char *map, int size)
 {
-	int i;
+    int i;
 
-	if (all_pieces_placed(tetri_set))
-		return (1);
-	if (*map != '.')
-		return (ft_solve(tetri_set, ++map, size));
-	i = placed;
-	while (tetri_set[i])
-	{
-<<<<<<< HEAD
-		if (!ft_place_piece(map, *tetri_set[i], size)) // FIX
-=======
-		if (tetri_set[i]->placed)
-		
-		if (!ft_place_piece(map, tetri_set[i]) || tetri_set[i]->placed) // FIX
->>>>>>> e74c6c8d13cc866ba728c8ac42681599eb1dd85a
-		{
-			i++;
-			continue ;
-		}
-		tetri_set[i]->placed = 1;
-		if (ft_solve(tetri_set, ++map, placed + 1))
-			return (1);
-		remove_piece();
-		tetri_set[i]->placed = 0;
-		i++;
-	}
-	return (0);
+    if (all_pieces_placed(tetri_set))
+        return (1);
+    if (*map != '.')
+        return (ft_solve(tetri_set, ++map, size));
+    i = 0;
+    while (tetri_set[i])
+    {
+        if (tetri_set[i]->placed || !ft_place_piece(map, tetri_set[i], size))
+        {
+            i++;
+            continue ;
+        }
+        tetri_set[i]->placed = 1;
+        if (ft_solve(tetri_set, ++map, size))
+            return (1);
+        ft_remove_piece(&map, tetri_set[i]);
+        tetri_set[i]->placed = 0;
+        i++;
+    }
+    return (0);
 }
 
 // Make the map
@@ -194,7 +188,7 @@ int	solve(t_piece **tetri_set, int min_size)
 
 	size = min_size;
 	if (!tetri_set)
-		return ;
+		return (0);
 	// Make first map with min_size
 	ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
