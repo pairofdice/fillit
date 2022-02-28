@@ -22,20 +22,45 @@
 
 int ft_place_piece(char *map, t_piece *tetri_set, int size)
 {
+	printf("%ld\n", tetri_set->offset[1]);
+	int first;
+	int second;
+	int third;
+	int i;
+	i = 0;
 
-	if (*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0])
-		&& *(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) == '.'
-		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2])
-		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) == '.'
-		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4])
-		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == '.')
+	first = (int)tetri_set->offset[0] * (size + 1) + (int)tetri_set->offset[1];
+	second = (int)tetri_set->offset[2] * (size + 1) + (int)tetri_set->offset[3];
+	third = (int)tetri_set->offset[4] * (size + 1) + (int)tetri_set->offset[5];
+	while (i < 6)
+	{
+		printf("%ld\n", tetri_set->offset[i]);
+		i++;
+	}
+	printf("first is %c\n", *(map + first));
+	printf("second is %c\n", *(map + second));
+	printf("third is %c\n", *(map + third));
+	/*if (*(map + (int)tetri_set->offset[1] * (size + 1) + (int)tetri_set->offset[0])
+		&& *(map + (int)tetri_set->offset[1] * (size + 1) + (int)tetri_set->offset[0]) == '.'
+		&& *(map + (int)tetri_set->offset[3] * (size + 1) + (int)tetri_set->offset[2])
+		&& *(map + (int)tetri_set->offset[3] * (size + 1) + (int)tetri_set->offset[2]) == '.'
+		&& *(map + (int)tetri_set->offset[5] * (size + 1) + (int)tetri_set->offset[4])
+		&& *(map + (int)tetri_set->offset[5] * (size + 1) + (int)tetri_set->offset[4]) == '.')*/
+	if (*(map + first) && *(map + first) == '.' 
+		&& *(map + second) && *(map + second) == '.'
+		&& *(map + third) && *(map + third) == '.')
 		{
+			printf("if in place piece\n");
 			*map = tetri_set->name;
-			*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) = tetri_set->name;
-			*(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) = tetri_set->name;
-			*(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) = tetri_set->name;
+			*(map + first) = tetri_set->name;
+			*(map + second) = tetri_set->name;
+			*(map + third) = tetri_set->name;
 			return (1);
 		}
+		*map = tetri_set->name;
+		*(map + first) = tetri_set->name;
+		*(map + second) = tetri_set->name;
+		*(map + third) = tetri_set->name; 
 	return (0);
 }
 
@@ -86,24 +111,25 @@ int	all_pieces_placed(t_piece **tetri_set)
 	int	i;
 
 	i = 0;
-	// need a null-terminated list?
 	while (tetri_set[i])
 	{
 		if (tetri_set[i]->placed == 0)
-			return (0);
+			{
+				printf("placed 0\n");
+				return (0);}
 		i++;
 	}
 	return (1);
 }
 
-int    ft_solve(t_piece **tetri_set, char *map, int size)
+int    ft_search(t_piece **tetri_set, char *map, int size)
 {
     int i;
 
     if (all_pieces_placed(tetri_set))
         return (1);
     if (*map != '.')
-        return (ft_solve(tetri_set, ++map, size));
+        return (ft_search(tetri_set, ++map, size));
     i = 0;
     while (tetri_set[i])
     {
@@ -113,7 +139,7 @@ int    ft_solve(t_piece **tetri_set, char *map, int size)
             continue ;
         }
         tetri_set[i]->placed = 1;
-        if (ft_solve(tetri_set, ++map, size))
+        if (ft_search(tetri_set, ++map, size))
             return (1);
         ft_remove_piece(&map, tetri_set[i]);
         tetri_set[i]->placed = 0;
@@ -184,15 +210,19 @@ int	ft_map(int size, char **ptr)
 int	solve(t_piece **tetri_set, int min_size)
 {
 	int		size;
+	int		solved;
 	char	*map;
+	int		i;
 
-	size = min_size;
+	i = 0;
+	solved = 0;
+	size = min_size + 2;
 	if (!tetri_set)
 		return (0);
 	// Make first map with min_size
 	ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
-	while (ft_solve(tetri_set, map, size) != 1)
+	while (ft_search(tetri_set, map, size != 1))
 	{
 		size++;
 		ft_map(size, &map);
