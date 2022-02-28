@@ -90,11 +90,11 @@ int	ft_solve(t_piece **tetri_set, char *map, int size)
 	if (all_pieces_placed(tetri_set))
 		return (1);
 	if (*map != '.')
-		return (ft_solve(tetri_set, ++map));
+		return (ft_solve(tetri_set, ++map, size));
 	i = placed;
 	while (tetri_set[i])
 	{
-		if (!ft_place_piece(map, *tetri_set[i])) // FIX
+		if (!ft_place_piece(map, *tetri_set[i], size)) // FIX
 		{
 			i++;
 			continue ;
