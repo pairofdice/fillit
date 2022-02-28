@@ -28,12 +28,12 @@ int ft_place_piece(char *map, t_piece *tetri_set, int size)
 		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2])
 		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) == '.'
 		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4])
-		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == '.'))
+		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == '.')
 		{
-			*map == *tetri_set->name;
-			*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == *tetri_set->name;
-			*(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == *tetri_set->name;
-			*(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == *tetri_set->name;
+			*map == tetri_set->name;
+			*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) == tetri_set->name;
+			*(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) == tetri_set->name;
+			*(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == tetri_set->name;
 			return (1);
 		}
 	return (0);
