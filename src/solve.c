@@ -21,8 +21,26 @@
 	// insert
 	// return 1 on succesful insert
 
+int ft_place_piece(char *map, t_piece *tetri_set)
+{
 
-int	ft_place_piece(char **map, char **loc, t_piece *piece)
+if (*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0])
+	&& *(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == '.'
+	&& *(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2])
+	&& *(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == '.'
+	&& *(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4])
+	&& *(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == '.'))
+	{
+		*map == *tetri_set->name;
+		*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == *tetri_set->name;
+		*(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == *tetri_set->name;
+		*(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == *tetri_set->name;
+		return (1);
+	}
+	return (0);
+}
+
+/*int	ft_place_piece(char *map, char **loc, t_piece *piece)
 {
 	int	side;
 	int k;
@@ -44,14 +62,12 @@ int	ft_place_piece(char **map, char **loc, t_piece *piece)
 		// place
 		k++;
 	}
+
 	return (1);
-}
+}*/
 
 // remove a piece from the map
 	// This could use ft_place_piece with piece name set to '.'???
-int	ft_remove_piece(char **map, t_piece piece)
-{
-}
 
 int	all_pieces_placed(t_piece **tetri_set)
 {
@@ -69,14 +85,14 @@ int	all_pieces_placed(t_piece **tetri_set)
 }
 
 // Do the actual depth-first-search for a solution
-int	ft_solve(t_piece **tetri_set, char **map, int placed)
+int	ft_solve(t_piece **tetri_set, char *map, )
 {
 	if (all_pieces_placed(tetri_set))
 		return (1);
-	if (**map != '.')
-		return (ft_solve(tetri_set, ++(*map)));
-
-	while (tetri_set[placed])
+	if (*map != '.')
+		return (ft_solve(tetri_set, ++map));
+	i = placed;
+	while (tetri_set[i])
 	{
 		if (!ft_place_piece(map, *tetri_set[i])) // FIX
 		{
@@ -84,7 +100,7 @@ int	ft_solve(t_piece **tetri_set, char **map, int placed)
 			continue ;
 		}
 		tetri_set[i]->placed = 1;
-		if (ft_solve(tetri_set, ++(*map), placed + 1)) // placed counter needs looking at
+		if (ft_solve(tetri_set, ++map, placed + 1))
 			return (1);
 		remove_piece();
 		tetri_set[i]->placed = 0;
@@ -120,6 +136,38 @@ int	ft_map(int size, char **ptr)
 	return (1);
 }
 
+/*int	ft_map(int size, char ***ptr)
+{
+	int	i;
+	int	j;
+	char	**map[size];
+
+	i = 0;
+	while (i < size)
+	{
+		map[i] = (char *)malloc(sizeof(char) * (unsigned long)size);
+			if(!map[i])
+			{
+				while (--i)
+				{
+					free(map[i]);
+					map[i] = NULL;
+				}
+			return (0);
+			}
+		j = 0;
+		while (j < size)
+		{
+			*map[j] = '.'
+			j++;
+		}
+		*map[j] = '\0';
+		i++;
+	}
+	**ptr=map;
+	return (1);
+}*/
+
 int	solve(t_piece **tetri_set, int min_size)
 {
 	int		size;
@@ -136,6 +184,6 @@ int	solve(t_piece **tetri_set, int min_size)
 		size++;
 		ft_map(size, &map);
 	}
-	printf("%s\n", map);
+	ft_putstr(map);
 	return (1);
 }
