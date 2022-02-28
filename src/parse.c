@@ -46,6 +46,7 @@ int	ft_parse(char *input, t_piece **tetri_set, int tetri_nb)
 		if (!tetri_set[i])
 			//delete all malloced pieces &
 			return (1);
+		tetri_set[i]->name = (char) ('A' + i);
 		parse_piece(input, tetri_set[i]);
 		input = input + 21;
 		i++;
