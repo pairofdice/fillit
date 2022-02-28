@@ -21,22 +21,22 @@
 	// insert
 	// return 1 on succesful insert
 
-int ft_place_piece(char *map, t_piece *tetri_set)
+int ft_place_piece(char *map, t_piece *tetri_set, int size)
 {
 
-if (*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0])
-	&& *(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == '.'
-	&& *(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2])
-	&& *(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == '.'
-	&& *(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4])
-	&& *(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == '.'))
-	{
-		*map == *tetri_set->name;
-		*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == *tetri_set->name;
-		*(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == *tetri_set->name;
-		*(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == *tetri_set->name;
-		return (1);
-	}
+	if (*(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0])
+		&& *(map + tetri_set->offset[1] * (size + 1) + tetri_set->offset[0]) == '.'
+		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2])
+		&& *(map + tetri_set->offset[3] * (size + 1) + tetri_set->offset[2]) == '.'
+		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4])
+		&& *(map + tetri_set->offset[5] * (size + 1) + tetri_set->offset[4]) == '.'))
+		{
+			*map == *tetri_set->name;
+			*(map + *tetri_set->offset[1] * (size + 1) + *tetri_set->offset[0]) == *tetri_set->name;
+			*(map + *tetri_set->offset[3] * (size + 1) + *tetri_set->offset[2]) == *tetri_set->name;
+			*(map + *tetri_set->offset[5] * (size + 1) + *tetri_set->offset[4]) == *tetri_set->name;
+			return (1);
+		}
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int	all_pieces_placed(t_piece **tetri_set)
 }
 
 // Do the actual depth-first-search for a solution
-int	ft_solve(t_piece **tetri_set, char *map, )
+int	ft_solve(t_piece **tetri_set, char *map, int size)
 {
 	if (all_pieces_placed(tetri_set))
 		return (1);
@@ -179,7 +179,7 @@ int	solve(t_piece **tetri_set, int min_size)
 	// Make first map with min_size
 	ft_map(size, &map);
 	// While solving is not successful size up, make new map and call again
-	while (ft_solve(tetri_set, map) != 1)
+	while (ft_solve(tetri_set, map, size) != 1)
 	{
 		size++;
 		ft_map(size, &map);
