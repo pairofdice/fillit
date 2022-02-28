@@ -6,14 +6,13 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/28 12:07:47 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/02/28 13:42:38 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include <stdio.h>
 
-// TODO Functions to:
 // Enter the piece into the map
 	// check bounds
 	// index into map using offsets And check if all places free
@@ -68,6 +67,18 @@ int ft_place_piece(char *map, t_piece *tetri_set, int size)
 
 // remove a piece from the map
 	// This could use ft_place_piece with piece name set to '.'???
+int	ft_remove_piece(char **map, t_piece *piece)
+{
+	int i;
+	char *temp;
+
+	i = 0;
+	while (i < 4)
+	{
+		temp = ft_strchr(*map, piece->name);
+		temp = '.';
+	}
+}
 
 int	all_pieces_placed(t_piece **tetri_set)
 {
@@ -87,6 +98,8 @@ int	all_pieces_placed(t_piece **tetri_set)
 // Do the actual depth-first-search for a solution
 int	ft_solve(t_piece **tetri_set, char *map, int size)
 {
+	int i;
+
 	if (all_pieces_placed(tetri_set))
 		return (1);
 	if (*map != '.')
@@ -94,7 +107,13 @@ int	ft_solve(t_piece **tetri_set, char *map, int size)
 	i = placed;
 	while (tetri_set[i])
 	{
+<<<<<<< HEAD
 		if (!ft_place_piece(map, *tetri_set[i], size)) // FIX
+=======
+		if (tetri_set[i]->placed)
+		
+		if (!ft_place_piece(map, tetri_set[i]) || tetri_set[i]->placed) // FIX
+>>>>>>> e74c6c8d13cc866ba728c8ac42681599eb1dd85a
 		{
 			i++;
 			continue ;
