@@ -131,33 +131,6 @@ int    ft_search(t_piece **tetri_set, char *map, int size)
     return (0);
 }
 
-// Make the map
-int	ft_map(int size, char **ptr)
-{
-	int		len;
-	int		i;
-	char	*map;
-
-	i = 0;
-	len = (size + 1) * size + 1;
-	map = malloc(sizeof(char) * (unsigned long)len);
-	if (!map)
-		return (0);
-	while (i < (len - 2))
-	{
-		if (i == size)
-			map[i] = '\n';
-		else if (i > size && (i + 1) % (size + 1) == 0)
-			map[i] = '\n';
-		else
-			map[i] = '.';
-		i++;
-	}
-	map[i] = '\0';
-	*ptr = map;
-	return (1);
-}
-
 /*int	ft_map(int size, char ***ptr)
 {
 	int	i;

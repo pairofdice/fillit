@@ -46,6 +46,32 @@ int	ft_sqrt(int nb)
 	return (i);
 }
 
+int	ft_map(int size, char **ptr)
+{
+	int		len;
+	int		i;
+	char	*map;
+
+	i = 0;
+	len = (size + 1) * size + 1;
+	map = malloc(sizeof(char) * (unsigned long)len);
+	if (!map)
+		return (0);
+	while (i < (len - 2))
+	{
+		if (i == size)
+			map[i] = '\n';
+		else if (i > size && (i + 1) % (size + 1) == 0)
+			map[i] = '\n';
+		else
+			map[i] = '.';
+		i++;
+	}
+	map[i] = '\0';
+	*ptr = map;
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	int		tetri_nb;
