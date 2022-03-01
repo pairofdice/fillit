@@ -32,6 +32,12 @@ int ft_place_piece(char *map, t_piece *tetri, int size)
 	first = (int)tetri->offset[1] * (size + 1) + (int)tetri->offset[0];
 	second = (int)tetri->offset[3] * (size + 1) + (int)tetri->offset[2];
 	third = (int)tetri->offset[5] * (size + 1) + (int)tetri->offset[4];
+	printf("first is %d\n", first);
+	printf("second is %d\n", second);
+	printf("third is %d\n", third);
+	printf("first char is %c\n", *(map+first));
+	printf("second char is %c\n", *(map+second));
+	printf("third char is %c\n", *(map+third));
 	if (*(map + first) && *(map + first) == '.' 
 		&& *(map + second) && *(map + second) == '.'
 		&& *(map + third) && *(map + third) == '.')
@@ -56,7 +62,7 @@ int	ft_remove_piece(char **map, t_piece *piece)
 
 	i = 0;
 	temp = *map;
-	if (*temp == 'x')
+	if (*temp == '@')
 	{
 		*temp =  '.';
 		return (1);
@@ -131,6 +137,7 @@ int	solve(t_piece **tetri_set, int min_size, int tetri_nb)
 	char	*map;
 	int		i;
 
+	printf("solve called\n");
 	i = 0;
 	solved = 0;
 	size = min_size;

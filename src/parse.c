@@ -12,6 +12,7 @@
 
 #include "../libft/libft.h"
 #include "fillit.h"
+#include <stdio.h>
 
 void	ft_delete_tetri(t_piece **tetri_set, int i)
 {
@@ -64,16 +65,21 @@ int	ft_parse(char *input, t_piece **tetri_set, int tetri_nb)
 		i++;
 	}
 	i = 0;
-	while (i < tetri_nb)
+	while (i < tetri_nb + 1)
 	{
 		tetri_set[i]->name = (char)('A' + i);
-		parse_piece(input, tetri_set[i]);
-		input = input + 21;
+		if (i < tetri_nb)
+		{
+			parse_piece(input, tetri_set[i]);
+			input = input + 21;
+		}
 		i++;
 	}
-	tetri_set[i]->name = 'x';
+	i--;
+	printf("%c\n", tetri_set[i]->name);
 	j = -1;
 	while (j++ < 6)
 		tetri_set[i]->offset[j] = 0;
+	//tetri_print(tetri_set);
 	return (0);
 }

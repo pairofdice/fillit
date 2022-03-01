@@ -36,5 +36,6 @@ int		all_pieces_placed(t_piece **tetri_set, int tetri_nb);
 void	print_map(char **map);
 int		ft_sqrt(int nb);
 int		ft_map(int size, char **ptr);
+void	tetri_print(t_piece **tetri_set, int tetri_nb);
 
 #endif
