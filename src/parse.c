@@ -65,21 +65,16 @@ int	ft_parse(char *input, t_piece **tetri_set, int tetri_nb)
 		i++;
 	}
 	i = 0;
-	while (i < tetri_nb + 1)
+	while (i < tetri_nb)
 	{
 		tetri_set[i]->name = (char)('A' + i);
-		if (i < tetri_nb)
-		{
-			parse_piece(input, tetri_set[i]);
-			input = input + 21;
-		}
+		parse_piece(input, tetri_set[i]);
+		input = input + 21;
 		i++;
 	}
-	i--;
-	printf("%c\n", tetri_set[i]->name);
+	tetri_set[i]->name = ('x');
 	j = -1;
-	while (j++ < 6)
+	while (j++ < 5)
 		tetri_set[i]->offset[j] = 0;
-	//tetri_print(tetri_set);
 	return (0);
 }

@@ -110,6 +110,7 @@ int	main(int argc, char **argv)
 		return ((int)write(1, "error\n", 6));
 //	tetri_print(tetri_set);
 	ft_putstr("parsing done\n");
+	tetri_print(tetri_set, tetri_nb);
 	tetri_set[tetri_nb]->name = '@';
 	tetri_print(tetri_set, tetri_nb);
 	printf("test\n");
