@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/02/28 13:57:12 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/01 11:17:18 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_remove_piece(char **map, t_piece *piece)
 	i = 0;
 	while (i < 4)
 	{
-		temp = ft_strchr(*map, piece->name);
+		temp = ft_strchr(temp++, piece->name);
 		temp =  ".";
 	}
 	return (1);
