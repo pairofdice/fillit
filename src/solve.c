@@ -26,6 +26,9 @@ int ft_place_piece(char *map, t_piece *tetri, int size)
 	int second;
 	int third;
 
+	printf("Map got: \n%s\n", map);
+	printf("%c\n", tetri->name);
+	ft_putstr("in the place_piece\n");
 	first = (int)tetri->offset[1] * (size + 1) + (int)tetri->offset[0];
 	second = (int)tetri->offset[3] * (size + 1) + (int)tetri->offset[2];
 	third = (int)tetri->offset[5] * (size + 1) + (int)tetri->offset[4];
@@ -37,39 +40,15 @@ int ft_place_piece(char *map, t_piece *tetri, int size)
 			*(map + first) = tetri->name;
 			*(map + second) = tetri->name;
 			*(map + third) = tetri->name;
+			printf("should print map here\n");
+			ft_putendl(map);
 			return (1);
 		}
+		ft_putendl(map);
+		printf("gives 0 back\n");
 	return (0);
 }
 
-/*int	ft_place_piece(char *map, char **loc, t_piece *piece)
-{
-	int	side;
-	int k;
-
-	side = ft_sqrt(ft_strlen(*map));
-	k = 0;
-	// check
-	while (k < 3)
-	{
-		if (piece->offsets[k * 2] == occupied_by_another || OOB)
-			return (0);
-		if (piece->offsets[k * 2 + 1] == occupied_by_another || OOB)
-			return (0);
-		k++;
-	}
-	k = 0;
-	while (k < 3)
-	{
-		// place
-		k++;
-	}
-
-	return (1);
-}*/
-
-// remove a piece from the map
-	// This could use ft_place_piece with piece name set to '.'???
 int	ft_remove_piece(char **map, t_piece *piece)
 {
 	int i;
@@ -77,21 +56,27 @@ int	ft_remove_piece(char **map, t_piece *piece)
 
 	i = 0;
 	temp = *map;
+	if (*temp == 'x')
+	{
+		*temp =  '.';
+		return (1);
+	}
 	while (i < 4)
 	{
 		temp = ft_strchr(temp++, piece->name);
-		temp =  ".";
+		*temp =  '.';
 	}
+				printf("removed a piece 0\n");
 	return (1);
 }
 
-int	all_pieces_placed(t_piece **tetri_set)
+int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
 {
 	int	i;
 	int count = 0;
 
 	i = 0;
-	while (tetri_set[i])
+	while (tetri_set[i] && i < tetri_nb)
 	{
 		if (tetri_set[i]->placed == 0)
 			{
@@ -105,65 +90,41 @@ int	all_pieces_placed(t_piece **tetri_set)
 	return (1);
 }
 
-int    ft_search(t_piece **tetri_set, char *map, int size)
+int    ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb)
 {
     int i;
 
-    if (all_pieces_placed(tetri_set))
-        return (1);
+    if (all_pieces_placed(tetri_set, tetri_nb))
+        {
+			printf("all pieces?\n");
+			return (1);
+		}
     if (*map != '.')
-        return (ft_search(tetri_set, ++map, size));
+        return (ft_search(tetri_set, ++map, size, tetri_nb));
     i = 0;
     while (tetri_set[i])
     {
+		printf("placed in search 1 %d\n", tetri_set[i]->placed);
+		printf("i is %d\n", i);
         if (tetri_set[i]->placed || !ft_place_piece(map, tetri_set[i], size))
         {
+			printf("placed in search 2 %d\n", tetri_set[i]->placed);
             i++;
             continue ;
         }
+		printf("placed in search 3 %d\n", tetri_set[i]->placed);
         tetri_set[i]->placed = 1;
-        if (ft_search(tetri_set, ++map, size))
+        if (ft_search(tetri_set, ++map, size, tetri_nb))
             return (1);
         ft_remove_piece(&map, tetri_set[i]);
         tetri_set[i]->placed = 0;
         i++;
     }
+	printf("failed to solve HERE\n");
     return (0);
 }
 
-/*int	ft_map(int size, char ***ptr)
-{
-	int	i;
-	int	j;
-	char	**map[size];
-
-	i = 0;
-	while (i < size)
-	{
-		map[i] = (char *)malloc(sizeof(char) * (unsigned long)size);
-			if(!map[i])
-			{
-				while (--i)
-				{
-					free(map[i]);
-					map[i] = NULL;
-				}
-			return (0);
-			}
-		j = 0;
-		while (j < size)
-		{
-			*map[j] = '.'
-			j++;
-		}
-		*map[j] = '\0';
-		i++;
-	}
-	**ptr=map;
-	return (1);
-}*/
-
-int	solve(t_piece **tetri_set, int min_size)
+int	solve(t_piece **tetri_set, int min_size, int tetri_nb)
 {
 	int		size;
 	int		solved;
@@ -177,12 +138,17 @@ int	solve(t_piece **tetri_set, int min_size)
 		return (0);
 	ft_map(size, &map);
 	printf("size is %d\n", size);
-	while (ft_search(tetri_set, map, size) != 1)
+	solved = ft_search(tetri_set, map, size, tetri_nb);
+	printf("size is %d\n", size);
+	while (solved == 0)
 	{
+		printf("resizing map\n");
+		free(map);
 		size++;
 		ft_map(size, &map);
+		solved = ft_search(tetri_set, map, size, tetri_nb);
 		printf("map resized\n");
 	}
-	ft_putstr(map);
+	ft_putendl(map);
 	return (1);
 }

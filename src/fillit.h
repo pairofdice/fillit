@@ -27,12 +27,12 @@ typedef struct s_piece
 	int		placed;
 }	t_piece;
 
-int		solve(t_piece **tetri_set, int min_size);
+int		solve(t_piece **tetri_set, int min_size, int tetri_nb);
 int		ft_isvalid(char **argv, char *buff, int *tetri_nb);
 void	parse_piece(char *input, t_piece *piece);
 int		ft_parse(char *input, t_piece **input_pieces, int tetri_nb);
 int		ft_place_piece(char *map, t_piece *tetri_set, int size);
-int		all_pieces_placed(t_piece **tetri_set);
+int		all_pieces_placed(t_piece **tetri_set, int tetri_nb);
 void	print_map(char **map);
 int		ft_sqrt(int nb);
 int		ft_map(int size, char **ptr);
