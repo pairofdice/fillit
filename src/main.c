@@ -62,6 +62,5 @@ int	main(int argc, char **argv)
 	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
 	solve(tetri_set, min_size);
-
 	return (0);
 }
