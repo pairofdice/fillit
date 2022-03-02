@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/02/25 12:30:47 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/02 11:15:03 by ncsomori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	tetri_print(t_piece **tetri_set, int tetri_nb)
 	{
 		j = -1;
 		printf("Name is %c\n", tetri_set[i]->name);
+		printf("Placed value is %d\n", tetri_set[i]->placed);
 		while (j++ < 5)
 		{
 			printf("Offset %d is %ld\n", j, tetri_set[i]->offset[j]);
@@ -108,12 +109,8 @@ int	main(int argc, char **argv)
 	min_size = ft_sqrt(tetri_nb * 4);
 	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
-//	tetri_print(tetri_set);
 	ft_putstr("parsing done\n");
-	tetri_print(tetri_set, tetri_nb);
-	tetri_set[tetri_nb]->name = '@';
-	tetri_print(tetri_set, tetri_nb);
-	printf("test\n");
+//	tetri_print(tetri_set, tetri_nb);
 	if (solve(tetri_set, min_size, tetri_nb) == 0)
 		return ((int)write(1, "error\n", 6));
 	return (0);

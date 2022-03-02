@@ -41,4 +41,6 @@ int		ft_place_piece(char *map, t_piece *tetri, int size);
 int		ft_remove_piece(char **map, t_piece *piece);
 int		all_pieces_placed(t_piece **tetri_set, int tetri_nb);
 
+void	tetri_print(t_piece **tetri_set, int tetri_nb);
+
 #endif
