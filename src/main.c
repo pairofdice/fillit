@@ -11,45 +11,6 @@
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
-/*
-void	print_map(char **map)
-{
-	int	side;
-	int	i;
-
-	side = ft_sqrt(ft_strlen(*map));
-	while (**map)
-	{
-		i = 0;
-		while (i < side)
-		{
-			ft_putchar((*map)++);
-			(*map)++;
-			i++;
-		}
-		ft_putchar('\n');
-	}
-}*/
-
-void	tetri_print(t_piece **tetri_set, int tetri_nb)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < tetri_nb)
-	{
-		j = -1;
-		printf("Name is %c\n", tetri_set[i]->name);
-		printf("Placed value is %d\n", tetri_set[i]->placed);
-		while (j++ < 5)
-		{
-			printf("Offset %d is %ld\n", j, tetri_set[i]->offset[j]);
-		}
-		i++;
-	}
-}
 
 int	ft_sqrt(int nb)
 {

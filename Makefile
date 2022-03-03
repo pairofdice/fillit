@@ -27,7 +27,7 @@ LIBFT = libft/
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -Wconversion
+CFLAGS = -Wall -Wextra -Werror
 
 RM = /bin/rm -f
 
