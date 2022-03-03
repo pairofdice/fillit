@@ -38,7 +38,7 @@ void	tetri_print(t_piece **tetri_set, int tetri_nb)
 	int	j;
 
 	i = 0;
-	while (i <= tetri_nb)
+	while (i < tetri_nb)
 	{
 		j = -1;
 		printf("Name is %c\n", tetri_set[i]->name);
@@ -96,7 +96,6 @@ int	main(int argc, char **argv)
 	int		tetri_nb;
 	int		min_size;
 	t_piece	*tetri_set[MAX_TETRI + 1];
-//	t_piece	**tetri_set;
 	char	buff[BUFF + 1];
 
 	tetri_nb = 0;
@@ -104,13 +103,9 @@ int	main(int argc, char **argv)
 		return ((int)write(1, "usage: ./fillit input_file\n", 28));
 	if (ft_isvalid(argv, buff, &tetri_nb) != 1)
 		return ((int)write(1, "error\n", 6));
-//	tetri_set = (t_piece**)malloc(sizeof(t_piece*) * ((unsigned long)tetri_nb + 1));
-	ft_putstr("validation done\n");
 	min_size = ft_sqrt(tetri_nb * 4);
 	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
-	ft_putstr("parsing done\n");
-//	tetri_print(tetri_set, tetri_nb);
 	if (solve(tetri_set, min_size, tetri_nb) == 0)
 		return ((int)write(1, "error\n", 6));
 	return (0);

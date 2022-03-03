@@ -74,6 +74,8 @@ int	ft_isvalid(char **argv, char *buff, int *tetri_nb)
 	chr_count = read(fd, buff, BUFF + 1);
 	buff[chr_count] = '\0';
 	close(fd);
+	if (buff[chr_count - 1] == '\n' && buff[chr_count - 2] == '\n')
+		return (0);
 	if (buff[i] == '\0')
 		return (0);
 	while (i < chr_count)
