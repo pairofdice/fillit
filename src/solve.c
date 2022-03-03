@@ -59,14 +59,16 @@ int	ft_remove_piece(char **map, t_piece *piece)
 	if (*temp == 'x')
 	{
 		*temp = '.';
+		printf("removed a piece \n");
 		return (1);
 	}
 	while (i < 4)
 	{
 		temp = ft_strchr(temp++, piece->name);
 		*temp = '.';
+		i++;
 	}
-	printf("removed a piece\n");
+	printf("removed a piece \n");
 	return (1);
 }
 
@@ -98,7 +100,7 @@ int	ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb)
 		return (1);
 	}
 	printf("check 2 \n");
-	if (*map != '.')
+	if (*map && *map != '.')
 		{
 			printf("map iterated\n");
 			return (ft_search(tetri_set, map + 1, size, tetri_nb));
@@ -116,7 +118,7 @@ int	ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb)
 			continue ;
 		}
 		printf("placed in search 3 %d\n", tetri_set[i]->placed);
-//		if (i < tetri_nb)
+		if (i < tetri_nb)
 			tetri_set[i]->placed = 1;
 		if (ft_search(tetri_set, map + 1, size, tetri_nb))
 			return (1);
