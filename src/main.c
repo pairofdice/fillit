@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/03/02 11:15:03 by ncsomori         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:16:49 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,20 @@ int	ft_map(int size, char **ptr)
 
 int	main(int argc, char **argv)
 {
-	int		tetri_nb;
-	int		min_size;
+	t_state	state;
 	t_piece	*tetri_set[MAX_TETRI + 1];
 	char	buff[BUFF + 1];
 
-	tetri_nb = 0;
+	state.tetri_nb = 0;
 	if (argc != 2)
 		return ((int)write(1, "usage: ./fillit input_file\n", 28));
-	if (ft_isvalid(argv, buff, &tetri_nb) != 1)
+	if (ft_isvalid(argv, buff, &state) != 1)
 		return ((int)write(1, "error\n", 6));
-	min_size = ft_sqrt(tetri_nb * 4);
-	if (ft_parse(buff, tetri_set, tetri_nb) != 0)
+	printf("validated\n");
+	state.size = ft_sqrt(state.tetri_nb * 4);
+	if (ft_parse(buff, tetri_set, state.tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
-	if (solve(tetri_set, min_size, tetri_nb) == 0)
+	if (solve(tetri_set, &state) == 0)
 		return ((int)write(1, "error\n", 6));
 	return (0);
 }

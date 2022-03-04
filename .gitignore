@@ -4,3 +4,7 @@ norm_output
 test_exe
 a.out
 *.gch
+*.dSYM/
+fillit
+libft/
+

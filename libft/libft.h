@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 17:17:40 by jsaarine          #+#    #+#             */
-/*   Updated: 2021/11/24 16:37:55 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/04 10:37:05 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,21 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdlib.h>
 
 typedef struct s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}		t_list;
+}	t_list;
+typedef struct s_vec
+{
+	char	*memory;
+	size_t	elem_size;
+	size_t	alloc_size;
+	size_t	len;
+}	t_vec;
 // PART 1
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
@@ -90,5 +98,25 @@ int		ft_wordcount(char const *s, char c, int wordcount);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 int		ft_abs(int a);
+// vector
+int		vec_new(t_vec *src, size_t init_len, size_t elem_size);
+void	vec_free(t_vec *src);
+int		vec_from(t_vec *dst, void *src, size_t len, size_t elem_size);
+int		vec_resize(t_vec *src, size_t target_size);
+//int		vec_clear(t_vec *src);
+int		vec_push(t_vec *src, void *elem);
+int		vec_pop(void *dst, t_vec *src);
+int		vec_copy(t_vec *dst, t_vec *src);
+void	*vec_get(t_vec *src, size_t index);
+int		vec_insert(t_vec *dst, void *elem, size_t index);
+int		vec_remove(t_vec *src, size_t index);
+int		vec_append(t_vec *dst, t_vec *src);
+int		vec_prepend(t_vec *dst, t_vec *src);
+void	vec_iter(t_vec *src, void (*f) (void *));
+//void	*vec_find(t_vec *src, bool (*f) (void *));
+int		vec_map(t_vec *dst, t_vec *src, void (*f) (void *));
+//int		vec_filter(t_vec *dst, t_vec *src, bool (*f) (void *));
+int		vec_reduce(void *dst, t_vec *src, void (*f) (void *, void *));
+void	vec_sort(t_vec *src, int (*f)(void *, void *));
 
 #endif

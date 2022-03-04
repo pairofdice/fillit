@@ -9,7 +9,7 @@
 //#include <stdlib.h>
 
 /* Testing main */
-
+/*
 int test_parse_piece()
 {
 	int i;
@@ -42,9 +42,9 @@ int test_parse_piece()
 		i++;
 	}
 	return (0);
-}
+} */
 
-int test_parse()
+/* int test_parse()
 {
 	int i;
 	int k;
@@ -72,6 +72,28 @@ int test_parse()
 		i++;
 	}
 	return (0);
+} */
+
+void debug()
+{
+ 	char	*argv[2];
+	int		tetri_nb;
+	int		min_size;
+	t_piece	*tetri_set[MAX_TETRI + 1];
+	char	buff[BUFF + 1];
+	argv[0] = "hi";
+	argv[1] = "....\n....\n####\n....\n\n#...\n#...\n#...\n#...\n\n..#.\n..#.\n..#.\n..#.\n\n\0";
+
+	tetri_nb = 0;
+
+	ft_isvalid(argv, buff, &tetri_nb);
+	ft_putstr("validation done\n");
+	min_size = ft_sqrt(3 * 4);
+	ft_parse(argv[1], tetri_set, 3);
+
+	ft_putstr("parsing done\n");
+	solve(tetri_set, min_size, 3);
+
 }
 
 int main(int argc, char **argv)
@@ -79,6 +101,7 @@ int main(int argc, char **argv)
 	if (argc || *argv)
 	{}
 	//test_parse_piece();
-	test_parse();
+	//test_parse();
+	debug();
 	return (0);
 }

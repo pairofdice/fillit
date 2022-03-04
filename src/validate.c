@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:31:11 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/02/22 19:55:38 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:58:20 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_adjpart(char *buff)
 	return (1);
 }
 
-int	ft_isvalid(char **argv, char *buff, int *tetri_nb)
+int	ft_isvalid(char **argv, char *buff, t_state *state)
 {
 	int		i;
 	int		fd;
@@ -85,7 +85,7 @@ int	ft_isvalid(char **argv, char *buff, int *tetri_nb)
 		if (ft_adjpart(buff + i) != 1)
 			return (0);
 		i += 21;
-		(*tetri_nb)++;
+		state->tetri_nb++;
 	}
 	return (1);
 }

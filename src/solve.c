@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solve.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/03/01 11:17:18 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/04 09:53:41 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,18 +72,18 @@ int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
 	return (1);
 }
 
-int	ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb, int i)
+int	ft_search(t_piece **tetri_set, char *map, t_state *state, int i)
 {
 	int	j;
 
 	j = 0;
-	if (all_pieces_placed(tetri_set, tetri_nb) == 1)
+	if (all_pieces_placed(tetri_set, state->tetri_nb) == 1)
 		return (1);
 	while (map[j])
 	{
-		if (ft_place_piece(&map[j], tetri_set[i], size))
+		if (ft_place_piece(&map[j], tetri_set[i], state->size))
 		{
-			if (ft_search(tetri_set, map, size, tetri_nb, i + 1))
+			if (ft_search(tetri_set, map, state, i + 1))
 				return (1);
 			ft_remove_piece(&map, tetri_set[i]);
 		}
@@ -92,22 +92,20 @@ int	ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb, int i)
 	return (0);
 }
 
-int	solve(t_piece **tetri_set, int min_size, int tetri_nb)
+int	solve(t_piece **tetri_set, t_state *state)
 {
-	int		size;
 	char	*map;
 	char	*temp;
 
-	size = min_size;
 	if (!tetri_set)
 		return (0);
-	if (!ft_map(size, &map))
+	if (!ft_map(state->size, &map))
 		return (0);
-	while (ft_search(tetri_set, map, size, tetri_nb, 0) == 0)
+	while (ft_search(tetri_set, map, state, 0) == 0)
 	{
 		free(map);
-		size++;
-		if (!ft_map(size, &map))
+		state->size++;
+		if (!ft_map(state->size, &map))
 			return (0);
 	}
 	temp = map;
