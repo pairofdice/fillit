@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/03/04 10:16:49 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/04 11:01:14 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	main(int argc, char **argv)
 		return ((int)write(1, "usage: ./fillit input_file\n", 28));
 	if (ft_isvalid(argv, buff, &state) != 1)
 		return ((int)write(1, "error\n", 6));
-	printf("validated\n");
 	state.size = ft_sqrt(state.tetri_nb * 4);
 	if (ft_parse(buff, tetri_set, state.tetri_nb) != 0)
 		return ((int)write(1, "error\n", 6));
