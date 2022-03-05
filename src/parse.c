@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "fillit.h"
 
 int	ft_delete_tetri(t_piece **tetri_set, int i)
@@ -49,9 +48,7 @@ void	parse_piece(char *input, t_piece *piece)
 int	ft_parse(char *input, t_piece **tetri_set, int tetri_nb)
 {
 	int		i;
-	size_t	len;
 
-	len = ft_strlen(input);
 	i = -1;
 	while (++i < tetri_nb)
 	{

@@ -43,11 +43,8 @@ void	parse_piece(char *input, t_piece *piece);
 int		ft_delete_tetri(t_piece **tetri_set, int i);
 int		solve(t_piece **tetri_set, t_state *state);
 int		ft_search(t_piece **tetri_set, char *map, t_state *state, int i);
-//int		ft_search(t_piece **tetri_set, char *map, int size, int tetri_nb);
 int		ft_place_piece(char *map, t_piece *tetri, int size);
 int		ft_remove_piece(char **map, t_piece *piece);
 int		all_pieces_placed(t_piece **tetri_set, int tetri_nb);
-
-void	tetri_print(t_piece **tetri_set, int tetri_nb);
 
 #endif
