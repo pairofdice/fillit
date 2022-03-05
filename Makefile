@@ -6,7 +6,7 @@
 #    By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 12:59:18 by ncsomori          #+#    #+#              #
-#    Updated: 2022/02/28 13:58:56 by jsaarine         ###   ########.fr        #
+#    Updated: 2022/03/05 19:10:28 by ncsomori         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all: $(NAME)
 
 $(NAME):
 	make -C $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC) -I $(HDR) -L. libft/libft.a
+	$(CC) $(CFLAGS) -o $(NAME) $(SRC) -I /src -L. libft/libft.a
 
 clean:
 	$(RM) $(OBJ)
