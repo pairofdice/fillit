@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncsomori <ncsomori@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 10:36:55 by ncsomori          #+#    #+#             */
-/*   Updated: 2021/11/08 09:19:20 by ncsomori         ###   ########.fr       */
+/*   Created: 2021/11/08 11:44:16 by ncsomori          #+#    #+#             */
+/*   Updated: 2021/11/08 11:49:40 by ncsomori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	int	i;
+	const char		*str;
+	unsigned char	*new;
+	size_t			i;
 
+	str = (const char *)src;
+	new = (unsigned char *)dst;
 	i = 0;
-	while (s[i] != c && s[i] != '\0')
+	while (i < n)
+	{
+		if (*((unsigned char *)str + i) == (unsigned char)c)
+		{
+			*(new + i) = *((unsigned char *)str + i);
+			return ((unsigned char *)dst + i + 1);
+		}
+		*(new + i) = *((unsigned char *)str + i);
 		i++;
-	if (s[i] == c)
-		return ((char *) s + i);
-	else
-		return (NULL);
-}	
+	}
+	return (NULL);
+}

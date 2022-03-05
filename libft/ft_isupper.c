@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncsomori <ncsomori@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 10:36:55 by ncsomori          #+#    #+#             */
-/*   Updated: 2021/11/08 09:19:20 by ncsomori         ###   ########.fr       */
+/*   Created: 2021/12/13 21:01:47 by ncsomori          #+#    #+#             */
+/*   Updated: 2021/12/13 21:02:01 by ncsomori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
+int	ft_isupper(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i] != c && s[i] != '\0')
-		i++;
-	if (s[i] == c)
-		return ((char *) s + i);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
 	else
-		return (NULL);
-}	
+		return (0);
+}

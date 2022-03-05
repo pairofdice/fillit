@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ncsomori <ncsomori@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 10:36:55 by ncsomori          #+#    #+#             */
-/*   Updated: 2021/11/08 09:19:20 by ncsomori         ###   ########.fr       */
+/*   Created: 2021/11/01 13:40:25 by ncsomori          #+#    #+#             */
+/*   Updated: 2021/11/02 10:24:35 by ncsomori         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr(int n)
 {
-	int	i;
+	unsigned int	abs_val;
 
-	i = 0;
-	while (s[i] != c && s[i] != '\0')
-		i++;
-	if (s[i] == c)
-		return ((char *) s + i);
+	if (n < 0)
+	{
+		abs_val = -(unsigned int)n;
+		ft_putchar('-');
+	}
 	else
-		return (NULL);
-}	
+		abs_val = (unsigned int)n;
+	if (abs_val < 10)
+	{
+		ft_putchar((char)abs_val + '0');
+		return ;
+	}
+	else
+	{
+		ft_putnbr(abs_val / 10);
+		ft_putchar(abs_val % 10 + '0');
+		return ;
+	}
+}
