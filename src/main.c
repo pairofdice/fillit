@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	ft_sqrt(int nb)
+static int	ft_sqrt(int nb)
 {
 	int	i;
 

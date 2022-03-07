@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	ft_place_piece(char *map, t_piece *tetri, int size)
+static int	ft_place_piece(char *map, t_piece *tetri, int size)
 {
 	int	first;
 	int	second;
@@ -36,7 +36,7 @@ int	ft_place_piece(char *map, t_piece *tetri, int size)
 	return (0);
 }
 
-int	ft_remove_piece(char **map, t_piece *piece)
+static int	ft_remove_piece(char **map, t_piece *piece)
 {
 	int		i;
 	char	*temp;
@@ -53,7 +53,7 @@ int	ft_remove_piece(char **map, t_piece *piece)
 	return (1);
 }
 
-int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
+static int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
 {
 	int	i;
 
@@ -67,7 +67,7 @@ int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
 	return (1);
 }
 
-int	ft_search(t_piece **tetri_set, char *map, t_state *state, int i)
+static int	ft_search(t_piece **tetri_set, char *map, t_state *state, int i)
 {
 	int	j;
 

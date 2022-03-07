@@ -34,17 +34,8 @@ typedef struct s_state
 }	t_state;
 
 int		ft_map(int size, char **ptr);
-int		ft_sqrt(int nb);
 int		ft_isvalid(char **argv, char *buff, t_state *state);
-int		ft_chrcount(char *buff);
-int		ft_adjpart(char *buff);
 int		ft_parse(char *input, t_piece **tetri_set, int tetri_nb);
-void	parse_piece(char *input, t_piece *piece);
-int		ft_delete_tetri(t_piece **tetri_set, int i);
 int		solve(t_piece **tetri_set, t_state *state);
-int		ft_search(t_piece **tetri_set, char *map, t_state *state, int i);
-int		ft_place_piece(char *map, t_piece *tetri, int size);
-int		ft_remove_piece(char **map, t_piece *piece);
-int		all_pieces_placed(t_piece **tetri_set, int tetri_nb);
 
 #endif

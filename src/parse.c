@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	ft_delete_tetri(t_piece **tetri_set, int i)
+static int	ft_delete_tetri(t_piece **tetri_set, int i)
 {
 	if (i > 0)
 	{
@@ -25,7 +25,7 @@ int	ft_delete_tetri(t_piece **tetri_set, int i)
 	return (1);
 }
 
-void	parse_piece(char *input, t_piece *piece)
+static void	parse_piece(char *input, t_piece *piece)
 {
 	int		i;
 	int		i2;

@@ -12,7 +12,7 @@
 
 #include "fillit.h"
 
-int	ft_opentetri(char **argv, char **buff, ssize_t *chr_count)
+static int	ft_opentetri(char **argv, char **buff, ssize_t *chr_count)
 {
 	int	fd;
 
@@ -26,7 +26,7 @@ int	ft_opentetri(char **argv, char **buff, ssize_t *chr_count)
 	return (1);
 }
 
-int	ft_chrcount(char *buff)
+static int	ft_chrcount(char *buff)
 {
 	int	i;
 	int	piece;
@@ -48,7 +48,7 @@ int	ft_chrcount(char *buff)
 	return (1);
 }
 
-int	ft_adjpart(char *buff)
+static int	ft_adjpart(char *buff)
 {
 	int	i;
 	int	connection;
