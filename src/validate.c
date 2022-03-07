@@ -12,6 +12,20 @@
 
 #include "fillit.h"
 
+int	ft_opentetri(char **argv, char **buff, ssize_t *chr_count)
+{
+	int	fd;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+		return (0);
+	*chr_count = read(fd, *buff, BUFF + 1);
+	(*buff)[*chr_count] = '\0';
+	if (close(fd) < 0)
+		return (0);
+	return (1);
+}
+
 int	ft_chrcount(char *buff)
 {
 	int	i;
@@ -64,18 +78,15 @@ int	ft_adjpart(char *buff)
 int	ft_isvalid(char **argv, char *buff, t_state *state)
 {
 	int		i;
-	int		fd;
 	ssize_t	chr_count;
 
+	chr_count = 0;
 	i = 0;
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
+	if (ft_opentetri(argv, &buff, &chr_count) != 1)
 		return (0);
-	chr_count = read(fd, buff, BUFF + 1);
-	buff[chr_count] = '\0';
-	close(fd);
-	if (buff[chr_count - 1] == '\n' && buff[chr_count - 2] == '\n')
-		return (0);
+	if (chr_count > 2)
+		if (buff[chr_count - 1] == '\n' && buff[chr_count - 2] == '\n')
+			return (0);
 	if (buff[i] == '\0')
 		return (0);
 	while (i < chr_count)
