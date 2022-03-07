@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsaarine <jsaarine@student.42.fr>          +#+  +:+       +#+         #
+#    By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 12:59:18 by ncsomori          #+#    #+#              #
-#    Updated: 2022/03/05 19:10:28 by ncsomori         ###   ########.fr        #
+#    Updated: 2022/03/06 12:09:22 by jsaarine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,14 @@ S = src/
 SRC = $Smain.c \
 	  $Svalidate.c \
 	  $Sparse.c \
-	  $Ssolve.c 
+	  $Ssolve.c
 
 HDR = $Sfillit.h
 
 OBJ = $(SRC:%.c=%.o)
 
 LIBFT = libft/
+LIBA = libft/libft.a
 
 CC = gcc
 
@@ -35,9 +36,14 @@ RM = /bin/rm -f
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
+	$(CC) -o $@ $(CFLAGS) $(OBJ) $(LIBA)
+
+$(LIBA):
 	make -C $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(SRC) -I /src -L. libft/libft.a
+
+%.o: %.c $(LIBA) $(HDR)
+	gcc $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ)

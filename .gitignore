@@ -1,4 +1,5 @@
 *.swp
+.DS_Store
 norm_errors
 norm_output
 test_exe
@@ -7,4 +8,5 @@ a.out
 *.dSYM/
 fillit
 libft/
+*.o
 
