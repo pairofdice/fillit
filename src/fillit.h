@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 13:49:04 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/03/04 10:33:22 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/07 23:25:57 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int		ft_map(int size, char **ptr);
 int		ft_isvalid(char **argv, char *buff, t_state *state);
 int		ft_parse(char *input, t_piece **tetri_set, int tetri_nb);
 int		solve(t_piece **tetri_set, t_state *state);
+int	ft_delete_tetri(t_piece **tetri_set, int i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:31:11 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/03/04 09:58:20 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:31:18 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_opentetri(char **argv, char **buff, ssize_t *chr_count)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return (0);
-	*chr_count = read(fd, *buff, BUFF + 1);
+	*chr_count = read(fd, *buff, BUFF);
 	(*buff)[*chr_count] = '\0';
 	if (close(fd) < 0)
 		return (0);

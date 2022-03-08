@@ -6,21 +6,27 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/03/04 17:24:46 by ncsomori         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:47:17 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <string.h>
+#include <stdio.h>
 
-static int	ft_place_piece(char *map, t_piece *tetri, int size)
+static int	ft_place_piece(char *map, t_piece *tetri, int size, int j)
 {
 	int	first;
 	int	second;
 	int	third;
+	int	len;
 
 	first = (int)tetri->offset[1] * (size + 1) + (int)tetri->offset[0];
 	second = (int)tetri->offset[3] * (size + 1) + (int)tetri->offset[2];
 	third = (int)tetri->offset[5] * (size + 1) + (int)tetri->offset[4];
+ 	len = (size + 1) * (size) - j - 1;
+	if (len < first || len < second || len < third)
+		return (0);
 	if (*map && *map == '.'
 		&& *(map + first) && *(map + first) == '.'
 		&& *(map + second) && *(map + second) == '.'
@@ -70,13 +76,16 @@ static int	all_pieces_placed(t_piece **tetri_set, int tetri_nb)
 static int	ft_search(t_piece **tetri_set, char *map, t_state *state, int i)
 {
 	int	j;
+	//int len;
 
 	j = 0;
 	if (all_pieces_placed(tetri_set, state->tetri_nb) == 1)
 		return (1);
 	while (map[j])
 	{
-		if (ft_place_piece(&map[j], tetri_set[i], state->size))
+		while (map[j] != '.' && j < (state->size + 1) * (state->size) - 2)
+			j++;
+		if (ft_place_piece(&map[j], tetri_set[i], state->size, j))
 		{
 			if (ft_search(tetri_set, map, state, i + 1))
 				return (1);
@@ -103,5 +112,7 @@ int	solve(t_piece **tetri_set, t_state *state)
 			return (0);
 	}
 	ft_putendl(map);
+	free(map);
+	ft_delete_tetri(tetri_set, state->tetri_nb - 1);
 	return (1);
 }
