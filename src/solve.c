@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 14:09:43 by jsaarine          #+#    #+#             */
-/*   Updated: 2022/03/08 13:47:17 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/08 17:05:53 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	ft_search(t_piece **tetri_set, char *map, t_state *state, int i)
 		return (1);
 	while (map[j])
 	{
-		while (map[j] != '.' && j < (state->size + 1) * (state->size) - 2)
+		while (map[j] != '.' && j < state->len)
 			j++;
 		if (ft_place_piece(&map[j], tetri_set[i], state->size, j))
 		{
@@ -108,6 +108,7 @@ int	solve(t_piece **tetri_set, t_state *state)
 	{
 		free(map);
 		state->size++;
+		state->len = (state->size + 1) * (state->size) - 2;
 		if (!ft_map(state->size, &map))
 			return (0);
 	}
