@@ -9,4 +9,4 @@ a.out
 fillit
 libft/
 *.o
-
+eval_tests/

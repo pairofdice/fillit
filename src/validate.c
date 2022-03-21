@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:31:11 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/03/08 13:31:18 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/21 18:15:36 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ static int	ft_chrcount(char *buff)
 			piece++;
 		i++;
 	}
-	if (!buff[i] || piece != 4 || (buff[i] != '\n' && buff[i] != '\0'))
+	if (!buff[i] || piece != 4 || buff[i] != '\n')
+		return (0);
+	if (buff[i + 1] != '\n' && buff[i + 1] != '\0')
 		return (0);
 	return (1);
 }

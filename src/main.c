@@ -6,7 +6,7 @@
 /*   By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 11:51:32 by ncsomori          #+#    #+#             */
-/*   Updated: 2022/03/08 00:08:23 by jsaarine         ###   ########.fr       */
+/*   Updated: 2022/03/21 18:14:57 by jsaarine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ int	main(int argc, char **argv)
 		return ((int)write(1, "error\n", 6));
 	if (solve(tetri_set, &state) == 0)
 		return ((int)write(1, "error\n", 6));
-	system("leaks fillit");
 	return (0);
 }

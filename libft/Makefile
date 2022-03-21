@@ -6,7 +6,7 @@
 #    By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/03 15:04:07 by ncsomori          #+#    #+#              #
-#    Updated: 2022/03/08 16:03:44 by jsaarine         ###   ########.fr        #
+#    Updated: 2022/03/08 22:14:51 by jsaarine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ OBJECTS = $(SRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) :
-	gcc -c -Wall -Wextra -Werror -g -fsanitize=address $(SRCS) -I.
+	gcc -c -Wall -Wextra -Werror $(SRCS) -I.
 	ar rc $(NAME) $(OBJECTS)
 
 clean:

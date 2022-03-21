@@ -6,7 +6,7 @@
 #    By: jsaarine <jsaarine@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/22 12:59:18 by ncsomori          #+#    #+#              #
-#    Updated: 2022/03/08 00:07:50 by jsaarine         ###   ########.fr        #
+#    Updated: 2022/03/08 22:15:26 by jsaarine         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBA = libft/libft.a
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 RM = /bin/rm -f
 
